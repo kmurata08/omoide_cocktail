@@ -12,6 +12,10 @@
                 <img v-bind:src="blobUrl" v-on:load="onLoadImg">
             </a>
         </div>
+        <div v-if="result">
+            <p>あなたの選んだカクテルは<span v-bind:style="{color: resultColor}">{{ result.name }}</span>です！</p>
+            <p>{{ result.word }}</p>
+        </div>
     </div>
 </body>
 <script src="./static/js/Vibrant.min.js"></script>

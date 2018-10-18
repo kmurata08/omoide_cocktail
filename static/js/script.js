@@ -246,7 +246,7 @@ var app = new Vue({
 
             // 使う特徴を決める
             let vibBase;
-            if (swatches.hasOwnProperty(Vibrant)) {
+            if (typeof swatches.Vibrant !== "undefined") {
                 vibBase = swatches.Vibrant;
             } else {
                 vibBase = swatches.LightVibrant;

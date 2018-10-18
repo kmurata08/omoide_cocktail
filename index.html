@@ -13,7 +13,7 @@
             </a>
         </div>
         <div v-if="result">
-            <p>あなたの選んだカクテルは{{ result.name }}です！</p>
+            <p>あなたの選んだカクテルは<span v-bind:style="{color: resultColor}">{{ result.name }}</span>です！</p>
             <p>{{ result.word }}</p>
         </div>
     </div>

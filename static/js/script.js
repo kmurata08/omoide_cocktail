@@ -5,6 +5,7 @@ var app = new Vue({
         blobUrl: '',
         imgExists: false,
         result: null,
+        resultColor: null,
         cocktails: [
             {
                 name: "ジントニック",
@@ -217,6 +218,7 @@ var app = new Vue({
             console.log(vibrantRGB);
             let cocktail = this.calcMostNearestCocktail(vibrantRGB, this.cocktails);
             this.result = cocktail;
+            this.resultColor = this.getColorCodeFromRGB(cocktail.rgb);
         },
         /**
          * 入力されたRGBとカクテルのリストから、最も近いカクテルを選ぶ
@@ -260,6 +262,13 @@ var app = new Vue({
         getRGBDistance: function(rgb1, rgb2) {
             let d = Math.sqrt((rgb1[0] - rgb2[0]) ** 2 + (rgb1[1] - rgb2[1]) ** 2 + (rgb1[2] - rgb2[2]) ** 2);
             return d;
+        },
+        getColorCodeFromRGB: function(rgb) {
+            let rhex = rgb[0].toString(16);
+            let ghex = rgb[1].toString(16);
+            let bhex = rgb[2].toString(16);
+            let colorCode = '#' + rhex + ghex + bhex;
+            return colorCode;
         }
     }
 });

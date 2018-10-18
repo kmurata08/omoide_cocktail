@@ -4,6 +4,7 @@ var app = new Vue({
     data: {
         blobUrl: '',
         imgExists: false,
+        result: null,
         cocktails: [
             {
                 name: "ジントニック",
@@ -215,7 +216,7 @@ var app = new Vue({
             console.log("入力された画像のRGB: ");
             console.log(vibrantRGB);
             let cocktail = this.calcMostNearestCocktail(vibrantRGB, this.cocktails);
-            console.log("選ばれたカクテルは " + cocktail.name + " です");
+            this.result = cocktail;
         },
         /**
          * 入力されたRGBとカクテルのリストから、最も近いカクテルを選ぶ

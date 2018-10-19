@@ -214,11 +214,41 @@ var app = new Vue({
          */
         onLoadImg: function(e) {
             let vibrantRGB = this.getVibrantRGB(e.target);
-            console.log("入力された画像のRGB: ");
-            console.log(vibrantRGB);
             let cocktail = this.calcMostNearestCocktail(vibrantRGB, this.cocktails);
             this.result = cocktail;
             this.resultColor = this.getColorCodeFromRGB(cocktail.rgb);
+        },
+        /**
+         * pixcel配列から、与えられたRGB値とのヒットするピクセル数をカウント
+         */
+        calcHitPixcelCount(rgb, pixcelArray) {
+            var hitCount = 0;
+            var d;
+            for (var i = 0; i < pixcelArray.length; i += 4) {
+                d = this.getRGBDistance(rgb, [pixcelArray[i], pixcelArray[i + 1], pixcelArray[i + 2]]);
+
+                // 指定した色とピクセルの色の距離が20以下であればヒット
+                if (d < 20) {
+                    hitCount++;
+                };
+            }
+            return hitCount;
+        },
+        /**
+         * 画像のRGBAピクセル配列を返す
+         * [R, G, B, A, R, G, B, A, R, ..., A]
+         */
+        getRGBAPixcelArray: function(imgElement) {
+            var cv = document.createElement('canvas');
+
+            cv.width = imgElement.naturalWidth;
+            cv.height = imgElement.naturalHeight;
+
+            var ct = cv.getContext('2d');
+
+            ct.drawImage(imgElement, 0, 0);
+
+            return ct.getImageData(0, 0, cv.width, cv.height).data;
         },
         /**
          * 入力されたRGBとカクテルのリストから、最も近いカクテルを選ぶ
@@ -227,16 +257,12 @@ var app = new Vue({
             var cocktail;
             var minD = 1000;
             for (var i in cocktails) {
-                console.log("----calcrate start----");
                 let _cocktail = cocktails[i];
                 let distance = this.getRGBDistance(rgb, _cocktail.rgb);
                 if (distance < minD) {
                     minD = distance;
                     cocktail = _cocktail;
                 }
-                console.log("入力した画像と" + _cocktail.name + "の距離:");
-                console.log(distance);
-                console.log("----calcreate end-----");
             }
             return cocktail;
         },
@@ -247,13 +273,37 @@ var app = new Vue({
             let vibrant = new Vibrant(imgElement);
             let swatches = vibrant.swatches();
 
-            // 使う特徴を決める
+            // 画像のRGBを出す
+            let pixcelArray = this.getRGBAPixcelArray(imgElement);
+
+            // 最もピクセル数の多いvibrantを選ぶ
             let vibBase;
+            var hitPixcelMax = -1;
             if (typeof swatches.Vibrant !== "undefined") {
-                vibBase = swatches.Vibrant;
-            } else {
-                vibBase = swatches.LightVibrant;
+                console.log("vibrant");
+                var hitCount1 = this.calcHitPixcelCount(swatches.Vibrant.rgb, pixcelArray);
+                if (hitCount1 > hitPixcelMax) {
+                    vibBase = swatches.Vibrant;
+                    hitPixcelMax = hitCount1;
+                }
             }
+            if (typeof swatches.LightVibrant !== "undefined") {
+                console.log("lightVibrant");
+                var hitCount2 = this.calcHitPixcelCount(swatches.LightVibrant.rgb, pixcelArray);
+                if (hitCount2 > hitPixcelMax) {
+                    vibBase = swatches.LightVibrant;
+                    hitPixcelMax = hitCount2;
+                }
+            }
+            if (typeof swatches.DarkVibrant !== "undefined") {
+                console.log("darkVibrant");
+                var hitCount3 = this.calcHitPixcelCount(swatches.Vibrant.rgb, pixcelArray);
+                if (hitCount3 > hitPixcelMax) {
+                    vibBase = swatches.DarkVibrant;
+                    hitPixcelMax = hitCount3;
+                }
+            }
+
             return vibBase.rgb;
         },
         /**
@@ -263,6 +313,9 @@ var app = new Vue({
             let d = Math.sqrt((rgb1[0] - rgb2[0]) ** 2 + (rgb1[1] - rgb2[1]) ** 2 + (rgb1[2] - rgb2[2]) ** 2);
             return d;
         },
+        /**
+         * RGBのリストから、カラーコードの文字列を返す
+         */
         getColorCodeFromRGB: function(rgb) {
             let rhex = rgb[0].toString(16);
             let ghex = rgb[1].toString(16);

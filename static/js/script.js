@@ -282,6 +282,8 @@ var app = new Vue({
             if (typeof swatches.Vibrant !== "undefined") {
                 console.log("vibrant");
                 var hitCount1 = this.calcHitPixcelCount(swatches.Vibrant.rgb, pixcelArray);
+                console.log(hitCount1);
+                console.log(swatches.Vibrant.getHex());
                 if (hitCount1 > hitPixcelMax) {
                     vibBase = swatches.Vibrant;
                     hitPixcelMax = hitCount1;
@@ -290,6 +292,8 @@ var app = new Vue({
             if (typeof swatches.LightVibrant !== "undefined") {
                 console.log("lightVibrant");
                 var hitCount2 = this.calcHitPixcelCount(swatches.LightVibrant.rgb, pixcelArray);
+                console.log(hitCount2);
+                console.log(swatches.LightVibrant.getHex());
                 if (hitCount2 > hitPixcelMax) {
                     vibBase = swatches.LightVibrant;
                     hitPixcelMax = hitCount2;
@@ -297,7 +301,9 @@ var app = new Vue({
             }
             if (typeof swatches.DarkVibrant !== "undefined") {
                 console.log("darkVibrant");
-                var hitCount3 = this.calcHitPixcelCount(swatches.Vibrant.rgb, pixcelArray);
+                var hitCount3 = this.calcHitPixcelCount(swatches.DarkVibrant.rgb, pixcelArray);
+                console.log(hitCount3);
+                console.log(swatches.DarkVibrant.getHex());
                 if (hitCount3 > hitPixcelMax) {
                     vibBase = swatches.DarkVibrant;
                     hitPixcelMax = hitCount3;

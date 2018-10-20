@@ -1,12 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-    <meta charset="utf-8" />
-    <title>vibrantjs form</title>
+    <meta charset="UTF-8">
+    <title>カクテピ</title>
+    <meta name="keywords" content=" Edgenium, エッジニウム">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no,user-scalable=no">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:site_name" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="static/img/ck_ogp.png">
+    <link rel="shortcut icon" href="static/img/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/img/apple-touch-icon.png">
+    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+    <style type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        <input type="file" id="image_form" v-on:change="setImg">
+        <div class="input_file">
+            <div class="preview">
+                <input accept="image/*" id="image_form" type="file" v-on:change="setImg">
+            </div>
+            <p class="btn_upload">
+                画像ファイルを選択してアップロード
+            </p>
+        </div>
         <div v-if="imgExists">
             <a v-bind:href="blobUrl">
                 <img v-bind:src="blobUrl" v-on:load="onLoadImg">
@@ -24,5 +48,6 @@
 </body>
 <script src="./static/js/Vibrant.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="./static/js/script.js"></script>
 </html>

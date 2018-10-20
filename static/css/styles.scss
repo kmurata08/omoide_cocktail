@@ -1,0 +1,58 @@
+@import "sanitize";
+
+$brand-c: #DB5024;
+$white: #fff;
+$black: #000;
+$gray-l: #bcbcbc;
+$gray-size: #A2A2A2;
+$gray-m: #666666;
+$gray-b: #4d4d4d;
+
+@mixin media-queries-tab {
+    @media screen and (min-width:600px) and (max-width:960px) {
+        @content;
+    }
+}
+@mixin media-queries-pc {
+    @media screen and (min-width: 960px) {
+        @content;
+    }
+}
+
+html,body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-y: scroll;
+}
+
+body {
+    background-image : url(../img/ck-bg.png);
+    background-position: center;
+    background-size: cover;
+    font-size: 1.4rem;
+}
+
+div {
+    display: block;
+}
+
+main {
+    overflow: hidden;
+}
+
+.input-file .preview {
+  background-image: url(../img/ck-dummy.png);
+  background-position: center;
+  background-size: contain;
+  width: 100px;
+}
+
+.input-file input[type="file"] {
+  opacity: 0;
+}

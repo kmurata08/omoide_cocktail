@@ -228,9 +228,9 @@ var app = new Vue({
                 d = this.getRGBDistance(rgb, [pixcelArray[i], pixcelArray[i + 1], pixcelArray[i + 2]]);
 
                 // 指定した色とピクセルの色の距離が20以下であればヒット
-                if (d < 20) {
+                if (d < 50) {
                     hitCount++;
-                };
+                }
             }
             return hitCount;
         },
@@ -276,37 +276,20 @@ var app = new Vue({
             // 画像のRGBを出す
             let pixcelArray = this.getRGBAPixcelArray(imgElement);
 
+
+            let vibrants = [swatches.Vibrant, swatches.LightVibrant, swatches.DarkVibrant];
+
             // 最もピクセル数の多いvibrantを選ぶ
             let vibBase;
             var hitPixcelMax = -1;
-            if (typeof swatches.Vibrant !== "undefined") {
-                console.log("vibrant");
-                var hitCount1 = this.calcHitPixcelCount(swatches.Vibrant.rgb, pixcelArray);
-                console.log(hitCount1);
-                console.log(swatches.Vibrant.getHex());
-                if (hitCount1 > hitPixcelMax) {
-                    vibBase = swatches.Vibrant;
-                    hitPixcelMax = hitCount1;
+            for (i in vibrants) {
+                if (typeof vibrants[i] === "undefined") {
+                    continue;
                 }
-            }
-            if (typeof swatches.LightVibrant !== "undefined") {
-                console.log("lightVibrant");
-                var hitCount2 = this.calcHitPixcelCount(swatches.LightVibrant.rgb, pixcelArray);
-                console.log(hitCount2);
-                console.log(swatches.LightVibrant.getHex());
-                if (hitCount2 > hitPixcelMax) {
-                    vibBase = swatches.LightVibrant;
-                    hitPixcelMax = hitCount2;
-                }
-            }
-            if (typeof swatches.DarkVibrant !== "undefined") {
-                console.log("darkVibrant");
-                var hitCount3 = this.calcHitPixcelCount(swatches.DarkVibrant.rgb, pixcelArray);
-                console.log(hitCount3);
-                console.log(swatches.DarkVibrant.getHex());
-                if (hitCount3 > hitPixcelMax) {
-                    vibBase = swatches.DarkVibrant;
-                    hitPixcelMax = hitCount3;
+                let hitCount = this.calcHitPixcelCount(vibrants[i].rgb, pixcelArray);
+                if (hitCount > hitPixcelMax) {
+                    vibBase = vibrants[i];
+                    hitPixcelMax = hitCount;
                 }
             }
 

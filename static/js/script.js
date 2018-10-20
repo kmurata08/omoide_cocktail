@@ -1,5 +1,4 @@
 var app = new Vue({
-    // using Vue.js
     el: '#app',
     data: {
         blobUrl: '',
@@ -276,11 +275,10 @@ var app = new Vue({
             // 画像のRGBを出す
             let pixcelArray = this.getRGBAPixcelArray(imgElement);
 
-
             let vibrants = [swatches.Vibrant, swatches.LightVibrant, swatches.DarkVibrant];
 
             // 最もピクセル数の多いvibrantを選ぶ
-            let vibBase;
+            var vibBase;
             var hitPixcelMax = -1;
             for (i in vibrants) {
                 if (typeof vibrants[i] === "undefined") {

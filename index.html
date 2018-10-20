@@ -15,6 +15,10 @@
         <div v-if="result">
             <p>あなたの選んだカクテルは<span v-bind:style="{color: resultColor}">{{ result.name }}</span>です！</p>
             <p>{{ result.word }}</p>
+
+            <a v-bind:href="shareHref" target="blank_">
+                Twiiterでシェアする
+            </a>
         </div>
     </div>
 </body>

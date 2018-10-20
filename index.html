@@ -47,7 +47,7 @@
         </div>
         <div v-else-if="result">
             <img v-bind:src="'./static/img/cocktail/' + result.img">
-            <p>あなたにオススメのカクテルは<span v-bind:style="{color: resultColor}">{{ result.name }}</span></p>
+            <p>あなたにオススメのカクテルは<span v-bind:style="{color: resultColorCode}">{{ result.name }}</span></p>
             <p>酒言葉: {{ result.word }}</p>
             <a v-bind:href="shareHref" target="blank_">
                 Twiiterでシェアする

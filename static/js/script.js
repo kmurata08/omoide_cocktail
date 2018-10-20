@@ -7,7 +7,6 @@ var app = new Vue({
         imgElement: null,
         isCalcrating: false,
         result: null,
-        resultColor: null,
         shareHref: '',
         cocktails: [
             {
@@ -248,7 +247,6 @@ var app = new Vue({
             this.imgElement = null;
             this.isCalcrating = false;
             this.result = null;
-            this.resultColor = null;
             this.shareHref = '';
         },
         /**
@@ -332,6 +330,19 @@ var app = new Vue({
             let colorCode = '#' + rhex + ghex + bhex;
             return colorCode;
         },
+    },
+    computed: {
+        resultColorCode: function() {
+            if (typeof this.result === 'undefined') {
+                return '';
+            }
+            let rgb = this.result.rgb;
+            let rhex = rgb[0].toString(16);
+            let ghex = rgb[1].toString(16);
+            let bhex = rgb[2].toString(16);
+            let colorCode = '#' + rhex + ghex + bhex;
+            return colorCode;
+        }
     }
 });
 

@@ -7,10 +7,15 @@
 <body>
     <div id="app">
         <input type="file" id="image_form" v-on:change="setImg">
-        <div v-if="imgExists">
-            <a v-bind:href="blobUrl">
-                <img v-bind:src="blobUrl" v-on:load="onLoadImg">
-            </a>
+        <div v-if="imgSetted">
+            <img v-bind:src="blobUrl" v-on:load="onLoadImg" v-show="imgLoaded">
+            <div v-show="!imgLoaded">
+                <p>Loading...</p>
+            </div>
+            <p>この画像で決定する</p>
+        </div>
+        <div v-if="imgLoaded">
+            <button v-on:click="convert">決定!</button>
         </div>
         <div v-if="result">
             <p>あなたの選んだカクテルは<span v-bind:style="{color: resultColor}">{{ result.name }}</span>です！</p>

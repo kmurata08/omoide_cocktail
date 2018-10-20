@@ -2,7 +2,9 @@ var app = new Vue({
     el: '#app',
     data: {
         blobUrl: '',
-        imgExists: false,
+        imgSetted: false,
+        imgLoaded: false,
+        imgElement: null,
         result: null,
         resultColor: null,
         shareHref: '',
@@ -207,13 +209,18 @@ var app = new Vue({
             e.preventDefault();
             let file = e.target.files[0];
             this.blobUrl = window.URL.createObjectURL(file); // Blob URLの作成
-            this.imgExists = true;
+            this.imgSetted = true;
+            this.imgLoaded = false;
         },
         /**
          * 画像が読み込まれたらonLoadImg発動
          */
         onLoadImg: function(e) {
-            let vibrantRGB = this.getVibrantRGB(e.target);
+            this.imgLoaded = true;
+            this.imgElement = e.target;
+        },
+        convert: function() {
+            let vibrantRGB = this.getVibrantRGB(this.imgElement);
             let cocktail = this.calcMostNearestCocktail(vibrantRGB, this.cocktails);
             this.result = cocktail;
             this.resultColor = this.getColorCodeFromRGB(cocktail.rgb);

@@ -218,38 +218,6 @@ var app = new Vue({
             this.resultColor = this.getColorCodeFromRGB(cocktail.rgb);
         },
         /**
-         * pixcel配列から、与えられたRGB値とのヒットするピクセル数をカウント
-         */
-        calcHitPixcelCount(rgb, pixcelArray) {
-            var hitCount = 0;
-            var d;
-            for (var i = 0; i < pixcelArray.length; i += 4) {
-                d = this.getRGBDistance(rgb, [pixcelArray[i], pixcelArray[i + 1], pixcelArray[i + 2]]);
-
-                // 指定した色とピクセルの色の距離が20以下であればヒット
-                if (d < 50) {
-                    hitCount++;
-                }
-            }
-            return hitCount;
-        },
-        /**
-         * 画像のRGBAピクセル配列を返す
-         * [R, G, B, A, R, G, B, A, R, ..., A]
-         */
-        getRGBAPixcelArray: function(imgElement) {
-            var cv = document.createElement('canvas');
-
-            cv.width = imgElement.naturalWidth;
-            cv.height = imgElement.naturalHeight;
-
-            var ct = cv.getContext('2d');
-
-            ct.drawImage(imgElement, 0, 0);
-
-            return ct.getImageData(0, 0, cv.width, cv.height).data;
-        },
-        /**
          * 入力されたRGBとカクテルのリストから、最も近いカクテルを選ぶ
          */
         calcMostNearestCocktail: function(rgb, cocktails) {
@@ -269,28 +237,18 @@ var app = new Vue({
          * imgオブジェクトからRGBのリストを返す
          */
         getVibrantRGB: function(imgElement) {
-            let vibrant = new Vibrant(imgElement);
+            let pallete = 200;
+            let quality = 3;
+            let vibrant = new Vibrant(imgElement, pallete, quality);
             let swatches = vibrant.swatches();
 
-            // 画像のRGBを出す
-            let pixcelArray = this.getRGBAPixcelArray(imgElement);
-
-            let vibrants = [swatches.Vibrant, swatches.LightVibrant, swatches.DarkVibrant];
-
-            // 最もピクセル数の多いvibrantを選ぶ
-            var vibBase;
-            var hitPixcelMax = -1;
-            for (i in vibrants) {
-                if (typeof vibrants[i] === "undefined") {
-                    continue;
-                }
-                let hitCount = this.calcHitPixcelCount(vibrants[i].rgb, pixcelArray);
-                if (hitCount > hitPixcelMax) {
-                    vibBase = vibrants[i];
-                    hitPixcelMax = hitCount;
-                }
+            var vibBase = swatches.Vibrant;
+            if (typeof vibBase === "undefined") {
+                vibBase = swatches.LightVibrant;
             }
-
+            if (typeof vibBase === "undefined") {
+                vibBase = swatches.DarkVibrant;
+            }
             return vibBase.rgb;
         },
         /**

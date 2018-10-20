@@ -8,22 +8,28 @@
     <div id="app">
         <input type="file" id="image_form" v-on:change="setImg">
         <div v-if="imgSetted">
-            <img v-bind:src="blobUrl" v-on:load="onLoadImg" v-show="imgLoaded">
+            <div v-show="imgLoaded">
+                <img v-bind:src="blobUrl" v-on:load="onLoadImg">
+            </div>
             <div v-show="!imgLoaded">
                 <p>Loading...</p>
             </div>
-            <p>この画像で決定する</p>
         </div>
         <div v-if="imgLoaded">
-            <button v-on:click="convert">決定!</button>
+            <button v-on:click="convert">画像を解析する</button>
         </div>
-        <div v-if="result">
-            <p>あなたの選んだカクテルは<span v-bind:style="{color: resultColor}">{{ result.name }}</span>です！</p>
-            <p>{{ result.word }}</p>
-
+        <div v-if="isCalcrating">
+            <p>マスターが解析中...</p>
+        </div>
+        <div v-else-if="result">
+            <p>あなたにオススメのカクテルは<span v-bind:style="{color: resultColor}">{{ result.name }}</span></p>
+            <p>酒言葉: {{ result.word }}</p>
             <a v-bind:href="shareHref" target="blank_">
                 Twiiterでシェアする
             </a>
+            <div>
+                <button v-on:click="reset">もう一度やる</button>
+            </div>
         </div>
     </div>
 </body>

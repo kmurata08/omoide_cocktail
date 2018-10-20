@@ -2,7 +2,10 @@ var app = new Vue({
     el: '#app',
     data: {
         blobUrl: '',
-        imgExists: false,
+        imgSetted: false,
+        imgLoaded: false,
+        imgElement: null,
+        isCalcrating: false,
         result: null,
         resultColor: null,
         shareHref: '',
@@ -200,6 +203,16 @@ var app = new Vue({
         ]
     },
     methods: {
+        reset: function() {
+            this.blobUrl = '';
+            this.imgSetted = false;
+            this.imgLoaded = false;
+            this.imgElement = null;
+            this.isCalcrating = false;
+            this.result = null;
+            this.resultColor = null;
+            this.shareHref = '';
+        },
         /**
          * 画像がセットされたら、blobUrlを作成して画像存在フラグを立てる
          */
@@ -207,17 +220,28 @@ var app = new Vue({
             e.preventDefault();
             let file = e.target.files[0];
             this.blobUrl = window.URL.createObjectURL(file); // Blob URLの作成
-            this.imgExists = true;
+            this.imgSetted = true;
+            this.imgLoaded = false;
         },
         /**
          * 画像が読み込まれたらonLoadImg発動
          */
         onLoadImg: function(e) {
-            let vibrantRGB = this.getVibrantRGB(e.target);
+            this.imgLoaded = true;
+            this.imgElement = e.target;
+        },
+        convert: function() {
+            this.isCalcrating = true;
+            let vibrantRGB = this.getVibrantRGB(this.imgElement);
             let cocktail = this.calcMostNearestCocktail(vibrantRGB, this.cocktails);
             this.result = cocktail;
             this.resultColor = this.getColorCodeFromRGB(cocktail.rgb);
             this.shareHref = "https://twitter.com/intent/tweet?url=http://cooktail.edgenium.com&text=あなた写真は" + this.result.name + "へと変わりました";
+
+            var self = this;
+            setTimeout(function() {
+                self.isCalcrating = false;
+            }, 2000);
         },
         /**
          * 入力されたRGBとカクテルのリストから、最も近いカクテルを選ぶ

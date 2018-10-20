@@ -46,10 +46,10 @@
             <p>マスターが解析中...</p>
         </div>
         <div v-else-if="result">
-            <img v-bind:src="'./static/img/cocktail/' + result.img">
+            <img v-bind:src="resultImgUri">
             <p>あなたにオススメのカクテルは<span v-bind:style="{color: resultColorCode}">{{ result.name }}</span></p>
             <p>酒言葉: {{ result.word }}</p>
-            <a v-bind:href="shareHref" target="blank_">
+            <a v-bind:href="resultShareUri" target="blank_">
                 Twiiterでシェアする
             </a>
             <div>

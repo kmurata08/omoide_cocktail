@@ -7,7 +7,6 @@ var app = new Vue({
         imgElement: null,
         isCalcrating: false,
         result: null,
-        shareHref: '',
         cocktails: [
             {
                 name: "ジントニック",
@@ -247,7 +246,6 @@ var app = new Vue({
             this.imgElement = null;
             this.isCalcrating = false;
             this.result = null;
-            this.shareHref = '';
         },
         /**
          * 画像がセットされたら、blobUrlを作成して画像存在フラグを立てる
@@ -272,7 +270,6 @@ var app = new Vue({
             let cocktail = this.calcMostNearestCocktail(vibrantRGB, this.cocktails);
             this.result = cocktail;
             this.resultColor = this.getColorCodeFromRGB(cocktail.rgb);
-            this.shareHref = "https://twitter.com/intent/tweet?url=http://cooktail.edgenium.com&text=あなた写真は" + this.result.name + "へと変わりました";
 
             var self = this;
             setTimeout(function() {
@@ -342,6 +339,12 @@ var app = new Vue({
             let bhex = rgb[2].toString(16);
             let colorCode = '#' + rhex + ghex + bhex;
             return colorCode;
+        },
+        resultImgUri: function() {
+            return './static/img/cocktail/' + this.result.img
+        },
+        resultShareUri: function() {
+            return "https://twitter.com/intent/tweet?url=http://cooktail.edgenium.com&text=あなた写真は" + this.result.name + "へと変わりました";
         }
     }
 });

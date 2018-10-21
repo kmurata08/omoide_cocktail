@@ -274,7 +274,7 @@ var app = new Vue({
             var self = this;
             setTimeout(function() {
                 self.isCalcrating = false;
-            }, 2000);
+            }, 5500);
         },
         /**
          * 入力されたRGBとカクテルのリストから、最も近いカクテルを選ぶ
@@ -350,5 +350,5 @@ var app = new Vue({
 });
 
 /**
- * 画像アップロードプレビュー
+ Tween
  */

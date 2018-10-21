@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <title>カクテピ</title>
@@ -15,6 +16,7 @@
     <link rel="shortcut icon" href="static/img/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="static/img/apple-touch-icon.png">
     <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+    <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" />
     <style type="text/css">
         [v-cloak] {
             display: none;
@@ -23,37 +25,44 @@
 </head>
 <body>
     <div id="app">
-        <div class="input_file">
-            <div class="preview">
-                <input accept="image/*" id="image_form" type="file" v-on:change="setImg">
-            </div>
-            <p class="btn_upload">
-                画像ファイルを選択してアップロード
-            </p>
+        <!--<p><a href="https://giphy.com/gifs/cinemagraph-bartender-takumi-tdHfgqwkxeDy8">via GIPHY</a></p>-->
+        <div class="input_file" v-if="!imgLoaded">
+            <label class="input_btn" for="image_form">
+                <img src="static/img/ck-dummy.png"/>
+            </label>
+            <input accept="image/*" id="image_form" type="file" v-on:change="setImg">
         </div>
-        <div v-if="imgSetted">
-            <div v-show="imgLoaded">
+        <div class="upload_file" v-if="(imgSetted && !result) || isCalcrating">
+            <div class="preview" v-show="imgLoaded">
                 <img v-bind:src="blobUrl" v-on:load="onLoadImg">
+                <div class="wrapper">
+                    <button class="btn" v-if="imgLoaded" v-on:click="convert">画像を解析する</button>
+                </div>
+                <div class="wrapper" v-if="isCalcrating">
+                    <button class="btn-load">マスターが解析中...</div>
+                </div>
+                <div v-show="!imgLoaded">
+                    <p>Loading...</p>
+                </div>
             </div>
-            <div v-show="!imgLoaded">
-                <p>Loading...</p>
-            </div>
-        </div>
-        <div v-if="imgLoaded">
-            <button v-on:click="convert">画像を解析する</button>
-        </div>
-        <div v-if="isCalcrating">
-            <p>マスターが解析中...</p>
-        </div>
         <div v-else-if="result">
-            <img v-bind:src="resultImgUri">
-            <p>あなたにオススメのカクテルは<span v-bind:style="{color: resultColorCode}">{{ result.name }}</span></p>
-            <p>酒言葉: {{ result.word }}</p>
-            <a v-bind:href="resultShareUri" target="blank_">
-                Twiiterでシェアする
-            </a>
-            <div>
-                <button v-on:click="reset">もう一度やる</button>
+            <div class="upload_result">
+                <img v-bind:src="blobUrl">
+            </div>
+            <div class="info-result">
+                <div>
+                    <img v-bind:src="resultImgUri">
+                </div>
+                <div>
+                    <label>あなたにオススメのカクテルは</label>
+                    <p v-bind:style="{color: resultColorCode}">「{{ result.name }}」</p>
+                    <label>酒言葉</label>
+                    <p>「{{ result.word }}」</p>
+                </div>
+            </div>
+            <div class="btn-result">
+                <a class="hover-buru" v-bind:href="resultShareUri" target="blank_">Twiiterでシェアする</a>
+                <button class="hover-buru" v-on:click="reset">もう一度やる</button>
             </div>
         </div>
     </div>
@@ -62,4 +71,5 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="./static/js/script.js"></script>
+
 </html>

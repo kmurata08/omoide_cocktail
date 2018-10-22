@@ -546,6 +546,11 @@ main {
 /**
  Button
  */
+input[type="file"],
+button,
+select {
+  outline: none; }
+
 .wrapper {
   height: 100%; }
 
@@ -632,7 +637,7 @@ main {
 #app {
   height: 100%;
   width: 100%;
-  background: url(../img/bartender.gif) no-repeat center;
+  background: url(../img/bartender2.png) no-repeat center;
   background-size: cover;
   z-index: 0;
   position: relative; }

@@ -344,11 +344,7 @@ var app = new Vue({
             return './static/img/cocktail/' + this.result.img
         },
         resultShareUri: function() {
-            return "https://twitter.com/intent/tweet?url=http://cooktail.edgenium.com&text=あなた写真は" + this.result.name + "へと変わりました";
+            return "https://twitter.com/intent/tweet?url=http://cooktail.edgenium.com&text=私の写真は" + this.result.name + "に変換されました！";
         }
     }
 });
-
-/**
- Tween
- */

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>カクテピ</title>
-    <meta name="keywords" content=" Edgenium, エッジニウム">
+    <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no,user-scalable=no">
     <meta property="og:type" content="website">
@@ -23,6 +23,7 @@
         }
     </style>
 </head>
+
 <body>
     <div id="app">
         <!--<p><a href="https://giphy.com/gifs/cinemagraph-bartender-takumi-tdHfgqwkxeDy8">via GIPHY</a></p>-->
@@ -34,41 +35,47 @@
         </div>
         <div class="upload_file" v-if="(imgSetted && !result) || isCalcrating">
             <div class="preview" v-show="imgLoaded">
-                <img v-bind:src="blobUrl" v-on:load="onLoadImg">
+                <div>
+                    <img v-bind:src="blobUrl" v-on:load="onLoadImg">
+                </div>
                 <div class="wrapper">
                     <button class="btn" v-if="imgLoaded" v-on:click="convert">画像を解析する</button>
                 </div>
                 <div class="wrapper" v-if="isCalcrating">
                     <button class="btn-load">マスターが解析中...</div>
+                    <!--<div id="bar" v-effect="childT"></div>-->
                 </div>
                 <div v-show="!imgLoaded">
                     <p>Loading...</p>
                 </div>
             </div>
         <div v-else-if="result">
-            <div class="upload_result">
+            <div class="result-img">
                 <img v-bind:src="blobUrl">
             </div>
-            <div class="info-result">
-                <div>
-                    <img v-bind:src="resultImgUri">
+            <div class="result-area">
+                <div class="info-result">
+                    <div>
+                        <img v-bind:src="resultImgUri">
+                    </div>
+                    <div>
+                        <label>あなたにオススメのカクテルは</label>
+                        <p v-bind:style="{color: resultColorCode}">「{{ result.name }}」</p>
+                        <label class="mt-5">酒言葉</label>
+                        <p>「{{ result.word }}」</p>
+                    </div>
                 </div>
-                <div>
-                    <label>あなたにオススメのカクテルは</label>
-                    <p v-bind:style="{color: resultColorCode}">「{{ result.name }}」</p>
-                    <label>酒言葉</label>
-                    <p>「{{ result.word }}」</p>
+                <div class="btn-result">
+                    <a class="hover-buru" v-bind:href="resultShareUri" target="blank_">Twiiterでシェアする</a>
+                    <button class="hover-buru" v-on:click="reset">もう一度やる</button>
                 </div>
-            </div>
-            <div class="btn-result">
-                <a class="hover-buru" v-bind:href="resultShareUri" target="blank_">Twiiterでシェアする</a>
-                <button class="hover-buru" v-on:click="reset">もう一度やる</button>
             </div>
         </div>
     </div>
 </body>
 <script src="./static/js/Vibrant.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="./static/js/script.js"></script>
 

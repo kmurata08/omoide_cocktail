@@ -61,4 +61,4 @@ gulp.task('webserver', function() {
  * メインタスク
  * タスク立ち上げ時と、ファイル更新時に圧縮
  */
-gulp.task('start', ['minify-css', 'minify-js', 'watch-css', 'webserver']);
+gulp.task('start', ['minify-css', 'minify-js', 'watch-css', 'watch-js', 'webserver']);

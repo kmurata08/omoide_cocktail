@@ -246,7 +246,7 @@ var app = new Vue({
          */
         setImg: function(e) {
             e.preventDefault();
-            let file = e.target.files[0];
+            var file = e.target.files[0];
             this.blobUrl = window.URL.createObjectURL(file); // Blob URLの作成
             this.imgSetted = true;
             this.imgLoaded = false;
@@ -260,8 +260,8 @@ var app = new Vue({
         },
         convert: function() {
             this.isCalcrating = true;
-            let vibrantRGB = this.getVibrantRGB(this.imgElement);
-            let cocktail = this.calcMostNearestCocktail(vibrantRGB, this.cocktails);
+            var vibrantRGB = this.getVibrantRGB(this.imgElement);
+            var cocktail = this.calcMostNearestCocktail(vibrantRGB, this.cocktails);
             this.result = cocktail;
             this.resultColor = this.getColorCodeFromRGB(cocktail.rgb);
 
@@ -277,8 +277,8 @@ var app = new Vue({
             var cocktail;
             var minD = 1000;
             for (var i in cocktails) {
-                let _cocktail = cocktails[i];
-                let distance = this.getRGBDistance(rgb, _cocktail.rgb);
+                var _cocktail = cocktails[i];
+                var distance = this.getRGBDistance(rgb, _cocktail.rgb);
                 if (distance < minD) {
                     minD = distance;
                     cocktail = _cocktail;
@@ -290,10 +290,10 @@ var app = new Vue({
          * imgオブジェクトからRGBのリストを返す
          */
         getVibrantRGB: function(imgElement) {
-            let pallete = 200;
-            let quality = 3;
-            let vibrant = new Vibrant(imgElement, pallete, quality);
-            let swatches = vibrant.swatches();
+            var pallete = 200;
+            var quality = 3;
+            var vibrant = new Vibrant(imgElement, pallete, quality);
+            var swatches = vibrant.swatches();
 
             var vibBase = swatches.Vibrant;
             if (typeof vibBase === "undefined") {
@@ -308,17 +308,20 @@ var app = new Vue({
          * 2つのRGB値の配列[r, g, b]から距離を計算する
          */
         getRGBDistance: function(rgb1, rgb2) {
-            let d = Math.sqrt((rgb1[0] - rgb2[0]) ** 2 + (rgb1[1] - rgb2[1]) ** 2 + (rgb1[2] - rgb2[2]) ** 2);
+            var d = Math.sqrt(
+                (rgb1[0] - rgb2[0]) * (rgb1[0] - rgb2[0])
+                + (rgb1[1] - rgb2[1]) * (rgb1[1] - rgb2[1])
+                + (rgb1[2] - rgb2[2]) *(rgb1[2] - rgb2[2]));
             return d;
         },
         /**
          * RGBのリストから、カラーコードの文字列を返す
          */
         getColorCodeFromRGB: function(rgb) {
-            let rhex = rgb[0].toString(16);
-            let ghex = rgb[1].toString(16);
-            let bhex = rgb[2].toString(16);
-            let colorCode = '#' + rhex + ghex + bhex;
+            var rhex = rgb[0].toString(16);
+            var ghex = rgb[1].toString(16);
+            var bhex = rgb[2].toString(16);
+            var colorCode = '#' + rhex + ghex + bhex;
             return colorCode;
         },
     },
@@ -327,11 +330,11 @@ var app = new Vue({
             if (typeof this.result === 'undefined') {
                 return '';
             }
-            let rgb = this.result.rgb;
-            let rhex = rgb[0].toString(16);
-            let ghex = rgb[1].toString(16);
-            let bhex = rgb[2].toString(16);
-            let colorCode = '#' + rhex + ghex + bhex;
+            var rgb = this.result.rgb;
+            var rhex = rgb[0].toString(16);
+            var ghex = rgb[1].toString(16);
+            var bhex = rgb[2].toString(16);
+            var colorCode = '#' + rhex + ghex + bhex;
             return colorCode;
         },
         resultImgUri: function() {

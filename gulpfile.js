@@ -11,9 +11,6 @@ gulp.task('minify-css', function() {
         .pipe($.pleeease({
             minifier: true,
         }))
-        .on('error', function(e) {
-            console.log(e);
-        })
         .pipe($.rename({
             extname: '.min.css'
         }))

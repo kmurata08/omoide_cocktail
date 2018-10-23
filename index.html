@@ -1,24 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+
 <head>
-    <meta charset="utf-8" />
-    <title>vibrantjs form</title>
+    <meta charset="UTF-8">
+    <title>カクテピ</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no,user-scalable=no">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:site_name" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="static/img/ck_ogp.png">
+    <link rel="shortcut icon" href="static/img/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/img/apple-touch-icon.png">
+    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+    <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" />
+    <style type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 </head>
+
 <body>
     <div id="app">
-        <input type="file" id="image_form" v-on:change="setImg">
-        <div v-if="imgExists">
-            <a v-bind:href="blobUrl">
-                <img v-bind:src="blobUrl" v-on:load="onLoadImg">
-            </a>
+        <!--<p><a href="https://giphy.com/gifs/cinemagraph-bartender-takumi-tdHfgqwkxeDy8">via GIPHY</a></p>-->
+        <div class="input_file" v-if="!imgLoaded">
+            <label class="input_btn" for="image_form">
+                <img src="static/img/ck-dummy.png"/>
+            </label>
+            <input accept="image/*" id="image_form" type="file" v-on:change="setImg">
         </div>
-        <div v-if="result">
-            <p>あなたの選んだカクテルは<span v-bind:style="{color: resultColor}">{{ result.name }}</span>です！</p>
-            <p>{{ result.word }}</p>
+        <div class="upload_file" v-if="(imgSetted && !result) || isCalcrating">
+            <div class="preview" v-show="imgLoaded">
+                <div>
+                    <img v-bind:src="blobUrl" v-on:load="onLoadImg">
+                </div>
+                <div class="wrapper">
+                    <button class="btn" v-if="imgLoaded" v-on:click="convert">画像を解析する</button>
+                </div>
+                <div class="wrapper" v-if="isCalcrating">
+                    <button class="btn-load">マスターが解析中...</div>
+                    <!--<div id="bar" v-effect="childT"></div>-->
+                </div>
+                <div v-show="!imgLoaded">
+                    <p>Loading...</p>
+                </div>
+            </div>
+        <div v-else-if="result">
+            <div class="result-img">
+                <img v-bind:src="blobUrl">
+            </div>
+            <div class="result-area">
+                <div class="info-result">
+                    <div>
+                        <img v-bind:src="resultImgUri">
+                    </div>
+                    <div>
+                        <label>あなたにオススメのカクテルは</label>
+                        <p v-bind:style="{color: resultColorCode}">「{{ result.name }}」</p>
+                        <label class="mt-5">酒言葉</label>
+                        <p>「{{ result.word }}」</p>
+                    </div>
+                </div>
+                <div class="btn-result">
+                    <a class="hover-buru" v-bind:href="resultShareUri" target="blank_">Twiiterでシェアする</a>
+                    <button class="hover-buru" v-on:click="reset">もう一度やる</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>
 <script src="./static/js/Vibrant.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="./static/js/script.js"></script>
+
 </html>

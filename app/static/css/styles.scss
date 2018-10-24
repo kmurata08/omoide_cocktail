@@ -326,9 +326,11 @@ select {
 .bar{
     background: yellow;
     width: 10px;
-    position: fixed;
+    position: absolute;
     height: 250px;
     top: 22%;
+    -webkit-box-shadow: 0 6px 20px rgba(0,0,0,.16);
+    box-shadow: 0 6px 20px rgba(0,0,0,.16);
     @include media-queries-pc {
         height: 300px;
         top: 29.5%;

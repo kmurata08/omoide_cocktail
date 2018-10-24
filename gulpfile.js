@@ -47,7 +47,7 @@ gulp.task('watch-js', function() {
  * webサーバ
  */
 gulp.task('webserver', function() {
-    gulp.src('./').pipe(
+    gulp.src('./app').pipe(
         $.webserver({
             host: 'localhost',
             port: 8000,

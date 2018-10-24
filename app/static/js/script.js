@@ -269,7 +269,7 @@ var app = new Vue({
             var self = this;
             setTimeout(function() {
                 self.isCalculating = false;
-            }, 500);
+            }, 8000);
 
             // animation
             if (isSmartPhone || isTablet) {

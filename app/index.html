@@ -53,7 +53,7 @@
                         <button class="btn" v-if="imgLoaded" v-on:click="convert">画像を解析する</button>
                     </div>
                     <div class="wrapper" v-show="isCalculating">
-                        <button class="btn-load">マスターが解析中...</button>
+                        <button class="btn-load">マスター解析中...</button>
                         <div id="bar"></div>
                     </div>
                     <div v-show="!imgLoaded">
@@ -66,7 +66,7 @@
                     <img id="result-img" v-bind:src="blobUrl">
                 </div>
                 <div id="result-area" class="result-area">
-                    <div class="info-result">
+                    <div class="info-result" >
                         <div>
                             <img v-bind:src="resultImgUri">
                         </div>
@@ -90,16 +90,16 @@
             <a>×</a>
         </div>
         <div class="modal-body">
-            <p>ねぇマスター<br>今日の思い出、濃いめでもらえない？</p>
-            <!--<p>「今日のご飯どうしよう？」<br>「何食べたい？」</p>
-            <p>決まって返ってくる言葉は「なんでもいい。」</p>
-            <p>おーけーそれなら神さまに決めてもらおう。</p>
-            <p>そんな思いつきで作りました。</p>
-            <p>たまに献立で使うも良し、<br>宅飲みで友達と遊ぶのも良し。</p>
-            <p>レシピ本に載ってないあなただけの料理が、ここから誕生することを願って。</p>
-            <p>※スロットで出た料理を作ったら、キャプチャと一緒にシェアしよう！#hungryslot</p>-->
-            <!--<p><a href="https://barmoonwalk.jp/">Cocktail images via bar moon walk</a></p>-->
-            <!--<p><a href="https://giphy.com/gifs/cinemagraph-bartender-takumi-tdHfgqwkxeDy8">Background image via GIPHY</a></p>-->
+            <p>「ねぇマスター」</p>
+            <p>「はい、いかがいたしましたか？」</p>
+            <p>「実は今日、すごく嬉しいことがあってさ。この思い出、濃いめでもらえない？」</p>
+            <p>「かしこまりました。それでは、そちらのお写真のアップロードをお願いいたします..」</p>
+            <p>ちょっと先の未来は、こんなふうに<span>日々の思い出を消費</span>してるかもしれません。</p>
+            <p>さぁ、君はどんな思い出をカクテルにする？</p>
+            <div class="link-area">
+                <a href="https://barmoonwalk.jp/">Cocktail images via bar moon walk</a>
+                <a href="https://giphy.com/gifs/cinemagraph-bartender-takumi-tdHfgqwkxeDy8">Background image via GIPHY</a>
+            </div>
         </div>
     </div>
 </body>

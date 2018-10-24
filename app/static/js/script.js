@@ -1,3 +1,5 @@
+var isSmartPhone = isMobile.phone;
+var isTablet = isMobile.tablet;
 var app = new Vue({
     el: '#app',
     data: {
@@ -268,12 +270,15 @@ var app = new Vue({
             var self = this;
             setTimeout(function() {
                 self.isCalculating = false;
-            }, 55000);
+            }, 7500);
 
             // animation
-            var bar = document.getElementById("bar");
-            console.log(bar);
-            TweenMax.from(bar, 1.75, {x: 290, repeat: -1, yoyo: true});
+            if(isSmartPhone || isTablet) {
+                TweenMax.from("#bar", 1.75, {x: 240, repeat: -1, yoyo: true});
+            } else {
+                TweenMax.from("#bar", 1.75, {x: 290, repeat: -1, yoyo: true});
+            }
+
         },
         /**
          * 入力されたRGBとカクテルのリストから、最も近いカクテルを選ぶ
@@ -351,5 +356,13 @@ var app = new Vue({
     }
 });
 
-    var logo = $('.logo');
-    TweenMax.from(logo, 0.75, {delay: 0.8, ease: Back.easeout, y: 25, opacity: 0});
+    TweenMax.from("#logo", 0.75, {delay: 0.8, ease: Power3.easeOutIn, y: 25, opacity: 0});
+    TweenMax.from("#upload-img", 0.75, {delay: 1, ease:Power3.easeOutIn, y: 25, opacity: 0});
+
+    // if(isSmartPhone || isTablet) {
+    //     TweenMax.to("#result-img", 0.75, {delay: 0.8, ease: Power3.easeOutIn, y: -25});
+    //     TweenMax.from("#result-area", 0.75, {delay: 1, ease: Power3.easeOutIn, y: 25, opacity: 0});
+    // } else {
+    //     TweenMax.to("#result-img", 0.75, {delay: 0.8, ease: Power3.easeOutIn, x: 25, opacity: 0});
+    //     TweenMax.from("#result-area", 0.75, {delay: 0.8, ease: Power3.easeOutIn, y: 25, opacity: 0});
+    // }

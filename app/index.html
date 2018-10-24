@@ -27,11 +27,11 @@
 <body>
     <div id="app">
         <div class="bg" v-bind:class="{ 'bg-calculate': isCalculating }">
-        <div class="logo"></div>
+        <div id="logo"></div>
         <!--<p><a href="https://giphy.com/gifs/cinemagraph-bartender-takumi-tdHfgqwkxeDy8">via GIPHY</a></p>-->
         <div class="input_file" v-if="!imgLoaded">
             <label class="input_btn" for="image_form">
-                <img class="upload-img" src="static/img/ck-upload.png"/>
+                <img id="upload-img" src="static/img/ck-upload.png"/>
             </label>
             <input accept="image/*" id="image_form" type="file" v-on:change="setImg">
         </div>
@@ -43,20 +43,20 @@
                 <div class="wrapper">
                     <button class="btn" v-if="imgLoaded" v-on:click="convert">画像を解析する</button>
                 </div>
-                <div class="wrapper" v-if="isCalculating">
+                <div class="wrapper" v-show="isCalculating">
                     <button class="btn-load">マスターが解析中...</button>
-                    <div id="bar" class="bar"></div>
+                    <div id="bar"></div>
                 </div>
                 <div v-show="!imgLoaded">
                     <p>Loading...</p>
                 </div>
             </div>
         </div>
-        <div v-else-if="result">
-            <div class="result-img">
+        <div v-show="!isCalclationg && result">
+            <div id="result-img" class="result-img">
                 <img v-bind:src="blobUrl">
             </div>
-            <div class="result-area">
+            <div id="result-area" class="result-area">
                 <div class="info-result">
                     <div>
                         <img v-bind:src="resultImgUri">
@@ -81,5 +81,6 @@
 <script type="text/javascript" src="./static/js/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/ismobilejs/isMobile.min.js"></script>
 <script type="text/javascript" src="./static/js/script.min.js"></script>
 </html>

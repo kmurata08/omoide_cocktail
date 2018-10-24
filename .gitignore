@@ -1,6 +1,6 @@
-#
-static/.sass-cache/
-static/css/styles.css.map
+# custom
+dist/
+
 
 # Created by https://www.gitignore.io/api/sass
 

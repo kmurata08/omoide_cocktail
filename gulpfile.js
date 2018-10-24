@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
+var runSequence = require('run-sequence');
 
 /**
  * scssをcssに変換して圧縮
@@ -44,7 +45,7 @@ gulp.task('watch-js', function() {
 });
 
 /**
- * webサーバ
+ * webサーバ(開発)
  */
 gulp.task('webserver', function() {
     gulp.src('./app').pipe(
@@ -58,7 +59,47 @@ gulp.task('webserver', function() {
 });
 
 /**
+ * webサーバ(本番)
+ */
+gulp.task('webserver-prod', function() {
+    return gulp.src('./dist').pipe(
+        $.webserver({
+            host: 'localhost',
+            port: 8000,
+            open: true
+        })
+    );
+});
+
+/**
+ * distにアプリをコピー
+ */
+var srcFiles = [
+    'app/*.html',
+    'app/**/*.png',
+    'app/**/*.gif',
+    'app/**/*.svg',
+    'app/**/*.jpg',
+    'app/**/*.min.js',
+    'app/**/*.min.css'
+]
+gulp.task('build-app', function() {
+    return gulp.src(srcFiles)
+        .pipe(gulp.dest('dist'));
+});
+
+/**
+ * distディレクトリ削除
+ */
+gulp.task('clean-dist', function() {
+    return gulp.src('dist', {read: false})
+        .pipe($.clean());
+});
+
+/**
  * メインタスク
- * タスク立ち上げ時と、ファイル更新時に圧縮
  */
 gulp.task('start', ['minify-css', 'minify-js', 'watch-css', 'watch-js', 'webserver']);
+gulp.task('build', function(callback) {
+    runSequence('clean-dist', 'build-app', 'webserver-prod', callback);
+});

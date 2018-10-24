@@ -268,7 +268,12 @@ var app = new Vue({
             var self = this;
             setTimeout(function() {
                 self.isCalculating = false;
-            }, 5500);
+            }, 55000);
+
+            // animation
+            var bar = document.getElementById("bar");
+            console.log(bar);
+            TweenMax.from(bar, 1.75, {x: 290, repeat: -1, yoyo: true});
         },
         /**
          * 入力されたRGBとカクテルのリストから、最も近いカクテルを選ぶ
@@ -345,3 +350,6 @@ var app = new Vue({
         }
     }
 });
+
+    var logo = $('.logo');
+    TweenMax.from(logo, 0.75, {delay: 0.8, ease: Back.easeout, y: 25, opacity: 0});

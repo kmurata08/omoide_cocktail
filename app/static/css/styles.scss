@@ -114,6 +114,15 @@ div {
 main {
     overflow: hidden;
 }
+
+.logo{
+    background: url(../img/ck-logo.png) no-repeat center;
+	background-size: contain;
+    width: auto;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 5%;
+}
 /**
  Button
  */
@@ -143,7 +152,7 @@ select {
     box-shadow: 0 6px 20px rgba(0,0,0,.16);
     @include media-queries-pc {
         width: 19.5%;
-        top: 80%;
+        top: 100%;
     }
 }
 
@@ -169,16 +178,16 @@ select {
 
 .btn:hover:before {
     top: 15px;
-    background-color: yellow;
+    background-color: rgb(255, 255, 100);
 }
 
 .btn-load{
     @extend .btn;
     color: $gray-b;
-    background: rgba(188, 188, 188,0.5);
+    background: rgba(188, 188, 188,0.5) !important;
     &:before{
         top: 15px;
-        background-color: yellow;
+        background-color: rgb(255, 255, 100);
     }
     &:hover{
         cursor: none;
@@ -269,7 +278,7 @@ select {
     display: none;
 }
 .input_file {
-    height: 100vh;
+    height: 55vh;
     align-items: center;
     display: flex;
     justify-content: center;
@@ -292,7 +301,7 @@ select {
 }
 
 .upload_file{
-    height: 100vh;
+    height: 55vh;
     align-items: center;
     display: flex;
     justify-content: center;
@@ -314,12 +323,16 @@ select {
     }
 }
 
-#bar{
+.bar{
     background: yellow;
     width: 10px;
     position: fixed;
     height: 250px;
     top: 22%;
+    @include media-queries-pc {
+        height: 300px;
+        top: 29.5%;
+    }
 }
 
 .result-img{

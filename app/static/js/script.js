@@ -337,7 +337,7 @@ var app = new Vue({
     },
     computed: {
         resultColorCode: function() {
-            if (typeof this.result === 'undefined') {
+            if (this.result === null) {
                 return '';
             }
             var rgb = this.result.rgb;
@@ -348,9 +348,15 @@ var app = new Vue({
             return colorCode;
         },
         resultImgUri: function() {
+            if (this.result === null) {
+                return '';
+            }
             return './static/img/cocktail/' + this.result.img
         },
         resultShareUri: function() {
+            if (this.result === null) {
+                return '';
+            }
             return "https://twitter.com/intent/tweet?url=http://cooktail.edgenium.com&text=私の写真は" + this.result.name + "に変換されました！";
         }
     }

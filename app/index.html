@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-        <div v-show="!isCalclationg && result">
+        <div v-show="!isCalculating && result">
             <div id="result-img" class="result-img">
                 <img v-bind:src="blobUrl">
             </div>
@@ -61,7 +61,7 @@
                     <div>
                         <img v-bind:src="resultImgUri">
                     </div>
-                    <div>
+                    <div v-if="result">
                         <label>あなたにオススメのカクテルは</label>
                         <p v-bind:style="{color: resultColorCode}">「{{ result.name }}」</p>
                         <label class="mt-5">酒言葉</label>

@@ -23,6 +23,7 @@ gulp.task('minify-css', function() {
  */
 gulp.task('minify-js', function() {
     return gulp.src("./static/js/script.js")
+        .pipe($.plumber())
         .pipe($.uglify())
         .pipe($.rename({
             extname: '.min.js'
@@ -34,21 +35,21 @@ gulp.task('minify-js', function() {
  * cssウォッチャー
  */
 gulp.task('watch-css', function() {
-    gulp.watch('./static/css/styles.scss', ['minify-css']);
+    return gulp.watch('./static/css/styles.scss', ['minify-css']);
 });
 
 /**
  * jsウォッチャー
  */
 gulp.task('watch-js', function() {
-    gulp.watch('./static/js/script.js', ['minify-js']);
+    return gulp.watch('./static/js/script.js', ['minify-js']);
 });
 
 /**
  * webサーバ(開発)
  */
 gulp.task('webserver', function() {
-    gulp.src('./app').pipe(
+    return gulp.src('./app').pipe(
         $.webserver({
             host: 'localhost',
             port: 8000,
@@ -99,7 +100,9 @@ gulp.task('clean-dist', function() {
 /**
  * メインタスク
  */
-gulp.task('start', ['minify-css', 'minify-js', 'watch-css', 'watch-js', 'webserver']);
+gulp.task('start', function(callback) {
+     runSequence(['minify-css', 'minify-js', 'watch-css', 'watch-js'], 'webserver', callback);
+});
 gulp.task('build', function(callback) {
     runSequence('clean-dist', 'build-app', 'webserver-prod', callback);
 });

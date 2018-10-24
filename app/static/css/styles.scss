@@ -1,11 +1,6 @@
 @import "sanitize";
-
-$brand-c: #DB5024;
-$white: #fff;
-$black: #000;
+$brand-c: #FFFF64;
 $gray-l: #bcbcbc;
-$gray-size: #A2A2A2;
-$gray-m: #666666;
 $gray-b: #4d4d4d;
 
 @mixin media-queries-tab {
@@ -21,7 +16,7 @@ $gray-b: #4d4d4d;
 /**
  Effect
  */
- @keyframes WAVE {
+ @keyframes wave {
      0% {
          transform: translateX(-50%) rotate(0deg);
      }
@@ -76,6 +71,17 @@ $gray-b: #4d4d4d;
   }
 }
 
+.hover-op {
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.9;
+    }
+}
 .hover-buru {
     -webkit-transition: all 0.1s ease-in-out;
     transition: all 0.1s ease-in-out;
@@ -94,7 +100,6 @@ html,body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
 }
 
 html {
@@ -102,9 +107,9 @@ html {
     overflow-y: scroll;
 }
 
-body {
+body,button,p {
     font-size: 1.4rem;
-    font-family: "Noto Sans Japanese";
+    font-family: 'Play', 'Noto Sans JP', sans-serif;
 }
 
 div {
@@ -115,18 +120,92 @@ main {
     overflow: hidden;
 }
 
+/**
+ Header
+ */
+header{
+    position: fixed;
+    top: 0;
+    z-index:2;
+    & a.logo{
+        z-index: 1;
+        position: fixed;
+        margin: 1% 4%;
+        @include media-queries-tab {
+            margin: 15px 0 0 15px;
+        }
+        & svg{
+            fill: #808080;
+            width: 46px;
+            height: auto;
+            @include media-queries-tab {
+                width: 60px;
+            }
+            @include media-queries-pc {
+                width: 84px;
+            }
+        }
+    }
+    & .title{
+        position: fixed;
+        z-index: 1;
+        margin-top: 10%;
+        width: 100%;
+        text-align: center;
+        @include media-queries-tab {
+            margin-top: 0;
+        }
+        @include media-queries-pc {
+            margin-top: 46px;
+        }
+        & img{
+            max-width: 170px;
+            @include media-queries-tab {
+                display: none;
+            }
+            @include media-queries-pc {
+                display: none;
+            }
+        }
+        & a{
+            position: fixed;
+            right: 16%;
+            margin-top: -14%;
+            width: 22px;
+            @include media-queries-tab {
+                right: 0;
+                margin: 15px 15px 0 0;
+            }
+            @include media-queries-pc {
+                right: 3%;
+                margin-top: -10%;
+            }
+            & svg{
+                @include media-queries-tab {
+                    width: 18px;
+                }
+                @include media-queries-pc {
+                    width: 25px;
+                }
+            }
+        }
+    }
+}
+
 #logo{
     background: url(../img/ck-logo.png) no-repeat center;
 	background-size: contain;
     width: auto;
     height: 80px;
     margin: 0 auto;
-    margin-top: 10%;
     @include media-queries-pc {
         height: 100px;
-        margin-top: 5%;
     }
 }
+.info-icon {
+    fill: #808080;
+}
+
 /**
  Button
  */
@@ -146,7 +225,7 @@ select {
     font-size: 18px;
     padding: 20px 40px;
     position: absolute;
-    top: 100%;
+    top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: hidden;
@@ -156,7 +235,7 @@ select {
     box-shadow: 0 6px 20px rgba(0,0,0,.16);
     @include media-queries-pc {
         width: 19.5%;
-        top: 100%;
+        top: 77%;
     }
 }
 
@@ -170,7 +249,7 @@ select {
     top: 80px;
     left: 50%;
     transform: translateX(-50%);
-    animation: WAVE 3s infinite linear;
+    animation: wave 3s infinite linear;
     transition: all .5s;
     z-index: -1;
 }
@@ -182,16 +261,16 @@ select {
 
 .btn:hover:before {
     top: 15px;
-    background-color: rgb(255, 255, 100);
+    background: $brand-c;
 }
 
 .btn-load{
     @extend .btn;
     color: $gray-b;
-    background: rgba(188, 188, 188,0.5) !important;
+    background: rgba(188, 188, 188,0.5);
     &:before{
         top: 15px;
-        background-color: rgb(255, 255, 100);
+        background: $brand-c;
     }
     &:hover{
         cursor: none;
@@ -232,7 +311,7 @@ select {
         background: #08a0e9;
     }
     button:hover{
-        background: yellow;
+        background: $brand-c;
         color: $gray-b;
     }
 }
@@ -253,8 +332,8 @@ select {
 	background: inherit;
 	filter: blur(3px) grayscale(90%);
 	position: fixed;
-	top: -55px;
-	bottom: -5px;
+	top: -30px;
+	bottom: -30px;
 	left: -30px;
 	right: -30px;
 	z-index: -2;
@@ -272,8 +351,8 @@ select {
 	background: inherit;
 	filter: blur(3px) grayscale(90%);
 	position: fixed;
-	top: -55px;
-	bottom: -5px;
+	top: -30px;
+	bottom: -30px;
 	left: -30px;
 	right: -30px;
 	z-index: -2;
@@ -282,7 +361,7 @@ select {
     display: none;
 }
 .input_file {
-    height: 55vh;
+    height: 100vh;
     align-items: center;
     display: flex;
     justify-content: center;
@@ -305,7 +384,7 @@ select {
 }
 
 .upload_file{
-    height: 55vh;
+    height: 100vh;
     align-items: center;
     display: flex;
     justify-content: center;
@@ -314,7 +393,7 @@ select {
 .preview {
     img {
         border-radius: 5px;
-        margin-bottom: 5%;
+        margin-bottom: 9%;
         width: 250px;
         height: 250px;
         object-fit: contain;
@@ -328,7 +407,7 @@ select {
 }
 
 #bar{
-    background-color: rgb(255, 255, 100);
+    background: rgba(255,255,100,0.8);
     width: 10px;
     position: absolute;
     height: 250px;
@@ -348,14 +427,14 @@ select {
     justify-content: center;
     flex-direction: column;
     img:nth-child(1) {
+        margin-top: 5%;
         border-radius: 5px;
-        margin-bottom: 80%;
         width: 250px;
         height: 250px;
         object-fit: contain;
         background: rgba(255,255,255,0.5);
         @include media-queries-pc {
-            margin-bottom: 25%;
+            position: absolute;
             width: 300px;
             height: 300px;
         }
@@ -369,19 +448,21 @@ select {
 }
 .result-area{
     position: absolute;
-    top: 49%;
+    top: 100%;
     width: 100%;
     padding: 5% 1%;
+    margin-bottom: 20%;
     border-radius: 5px;
-    background-color: rgba(255,255,0,0.8);
+    background-color: rgba(255,255,100,0.8);
     display: flex;
     align-items: center;
     flex-direction: column;
     @include media-queries-pc {
-        top: 50%;
-        left: 33%;
+        top: 37.5%;
+        left: 47%;
         width: 35%;
-        padding: 2% 1%;
+        padding: 41px 1%;
+        margin-bottom: 0;
     }
 }
 .info-result{
@@ -392,28 +473,100 @@ select {
         width: 80%;
     }
     div:nth-child(1){
-        width: 40%;
+        text-align: center;
+        width: 35%;
+        @include media-queries-pc {
+            width: 40%;
+        }
         img{
             width: 100px;
         }
     }
     div:nth-child(2){
-        width: 60%;
+        width: 65%;
+        @include media-queries-pc {
+            width: 60%;
+        }
         label{
             color: $gray-b;
+            @include media-queries-pc {
+                font-size: 1.2rem;
+            }
         }
         label.mt-5{
             display: block;
             margin-top: 5%;
         }
         p{
+            text-align: center;
             color: $gray-b;
             font-weight: bold;
             font-size: 2rem;
             margin: 0;
-            @include media-queries-pc {
-                font-size: 1.8rem;
-            }
         }
     }
+}
+.modal-content {
+    position:fixed;
+    display:none;
+    z-index: 5;
+    top: 0;
+    max-height: 100%;
+    padding: 12% 7%;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    @include media-queries-pc{
+        width: auto;
+        height: auto;
+        padding: 5% 15%;
+    }
+    & p {
+        padding: 3% 0;
+        margin: 0;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.6rem;
+        @include media-queries-pc {
+            padding: 2% 13% 0;
+            padding: 2% 0;
+            margin: 0 auto;
+            width: 56%;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.modal-body{
+    color: white;
+    margin-top: 25%;
+}
+.modal-close{
+    position: absolute;
+    right: 15px;
+    top: 0;
+    @include media-queries-pc {
+        right: 65px;
+        top: 25px;
+    }
+    color: white;
+    a {
+        font-size: 35px;
+        @include media-queries-pc {
+            font-size: 60px;
+        }
+    }
+}
+
+.modal-overlay {
+    z-index: 4;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,100,0.9);
+    opacity: 0.8;
 }

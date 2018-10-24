@@ -6,7 +6,7 @@ var runSequence = require('run-sequence');
  * scssをcssに変換して圧縮
  */
 gulp.task('minify-css', function() {
-    return gulp.src('./static/css/styles.scss')
+    return gulp.src('./app/static/css/styles.scss')
         .pipe($.plumber())
         .pipe($.sass())
         .pipe($.pleeease({
@@ -15,34 +15,33 @@ gulp.task('minify-css', function() {
         .pipe($.rename({
             extname: '.min.css'
         }))
-        .pipe(gulp.dest('./static/css'));
+        .pipe(gulp.dest('./app/static/css'));
 });
 
 /**
  * jsを圧縮
  */
 gulp.task('minify-js', function() {
-    return gulp.src("./static/js/script.js")
-        .pipe($.plumber())
+    return gulp.src("./app/static/js/script.js")
         .pipe($.uglify())
         .pipe($.rename({
             extname: '.min.js'
         }))
-        .pipe(gulp.dest('./static/js'));
+        .pipe(gulp.dest('./app/static/js'));
 });
 
 /**
  * cssウォッチャー
  */
 gulp.task('watch-css', function() {
-    return gulp.watch('./static/css/styles.scss', ['minify-css']);
+    return gulp.watch('./app/static/css/styles.scss', ['minify-css']);
 });
 
 /**
  * jsウォッチャー
  */
 gulp.task('watch-js', function() {
-    return gulp.watch('./static/js/script.js', ['minify-js']);
+    return gulp.watch('./app/static/js/script.js', ['minify-js']);
 });
 
 /**

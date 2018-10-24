@@ -26,7 +26,7 @@
 
 <body>
     <div id="app">
-        <div class="bg" v-bind:class="{ 'bg-calculate': isCalcrating }">
+        <div class="bg" v-bind:class="{ 'bg-calculate': isCalculating }">
         <!--<p><a href="https://giphy.com/gifs/cinemagraph-bartender-takumi-tdHfgqwkxeDy8">via GIPHY</a></p>-->
         <div class="input_file" v-if="!imgLoaded">
             <label class="input_btn" for="image_form">
@@ -34,7 +34,7 @@
             </label>
             <input accept="image/*" id="image_form" type="file" v-on:change="setImg">
         </div>
-        <div class="upload_file" v-if="(imgSetted && !result) || isCalcrating">
+        <div class="upload_file" v-if="(imgSetted && !result) || isCalculating">
             <div class="preview" v-show="imgLoaded">
                 <div>
                     <img v-bind:src="blobUrl" v-on:load="onLoadImg">
@@ -42,7 +42,7 @@
                 <div class="wrapper">
                     <button class="btn" v-if="imgLoaded" v-on:click="convert">画像を解析する</button>
                 </div>
-                <div class="wrapper" v-if="isCalcrating">
+                <div class="wrapper" v-if="isCalculating">
                     <button class="btn-load">マスターが解析中...</div>
                     <!--<div id="bar" v-effect="childT"></div>-->
                 </div>

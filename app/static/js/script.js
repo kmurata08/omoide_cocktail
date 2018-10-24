@@ -5,7 +5,7 @@ var app = new Vue({
         imgSetted: false,
         imgLoaded: false,
         imgElement: null,
-        isCalcrating: false,
+        isCalculating: false,
         result: null,
         cocktails: [
             {
@@ -238,7 +238,7 @@ var app = new Vue({
             this.imgSetted = false;
             this.imgLoaded = false;
             this.imgElement = null;
-            this.isCalcrating = false;
+            this.isCalculating = false;
             this.result = null;
         },
         /**
@@ -259,7 +259,7 @@ var app = new Vue({
             this.imgElement = e.target;
         },
         convert: function() {
-            this.isCalcrating = true;
+            this.isCalculating = true;
             var vibrantRGB = this.getVibrantRGB(this.imgElement);
             var cocktail = this.calcMostNearestCocktail(vibrantRGB, this.cocktails);
             this.result = cocktail;
@@ -267,7 +267,7 @@ var app = new Vue({
 
             var self = this;
             setTimeout(function() {
-                self.isCalcrating = false;
+                self.isCalculating = false;
             }, 5500);
         },
         /**

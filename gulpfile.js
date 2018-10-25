@@ -80,6 +80,7 @@ var srcFiles = [
     'app/**/*.gif',
     'app/**/*.svg',
     'app/**/*.jpg',
+    'app/**/*.ico',
     'app/**/*.min.js',
     'app/**/*.min.css'
 ]

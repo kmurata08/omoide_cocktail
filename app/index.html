@@ -66,14 +66,14 @@
                     <div class="result-img">
                         <img id="result-img" v-bind:src="blobUrl">
                     </div>
-                    <div id="result-area" class="result-area">
+                    <div id="result-area" class="result-area" v-bind:style="{background-color: resultColorCodeRGBA}">
                         <div class="info-result" >
                             <div>
                                 <img v-bind:src="resultImgUri">
                             </div>
                             <div v-if="result">
                                 <label>あなたにオススメのカクテルは</label>
-                                <p v-bind:style="{color: resultColorCode}">{{ result.name }}</p>
+                                <p v-bind:style="{color: resultColorCodeTxt}">{{ result.name }}</p>
                                 <label class="mt-5">カクテル言葉</label>
                                 <p>{{ result.word }}あなたへ</p>
                             </div>

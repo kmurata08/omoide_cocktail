@@ -415,13 +415,21 @@ var app = new Vue({
         }
     },
     computed: {
-        resultColorCode: function() {
+        resultColorCodeRGBA: function() {
             if (this.result === null) {
                 return '';
             }
             var rgb = this.result.rgb;
-            var colorCode = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',0.5)';
-            return colorCode;
+            var colorCodeRGBA = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',0.5)';
+            return colorCodeRGBA;
+        },
+        resultColorCodeTxt: function() {
+            if (this.result === null) {
+                return '';
+            }
+            var rgb = this.result.rgb;
+            var colorCodeTxt = '#' + rhex + ghex + bhex;
+            return colorCodeTxt;
         },
         resultImgUri: function() {
             if (this.result === null) {

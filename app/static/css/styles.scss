@@ -411,7 +411,7 @@ select {
     width: 10px;
     position: absolute;
     height: 250px;
-    top: 29.5%;
+    top: 28.5%;
     -webkit-box-shadow: 0 6px 20px rgba(0,0,0,.16);
     box-shadow: 0 6px 20px rgba(0,0,0,.16);
     @include media-queries-pc {
@@ -544,6 +544,13 @@ select {
     }
     & p.normal{
         font-style: normal;
+    }
+    & p.note{
+        font-style: normal;
+        font-size: 1.2rem;
+        @include media-queries-pc {
+            font-size: 1.4rem;
+        }
     }
     & span{
         color: $brand-c;

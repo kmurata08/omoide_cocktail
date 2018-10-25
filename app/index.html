@@ -74,7 +74,7 @@
                                 <label>あなたにオススメのカクテルは、</label>
                                 <p v-bind:style="{'background-color': resultColorCode}">{{ result.name }}</p>
                                 <label class="mt-5">カクテル言葉</label>
-                                <p>{{ result.word }}あなたへ</p>
+                                <p v-bind:style="{'background-color': resultColorCode}">{{ result.word }}あなたへ</p>
                             </div>
                         </div>
                         <div class="btn-result">
@@ -96,6 +96,7 @@
                 <p>「かしこまりました。それでは、そちらのお写真のアップロードをお願いいたします..」</p>
                 <p class="normal">ちょっと先の未来は、こんなふうに<span>日々の思い出を消費</span>してるかもしれません。</p>
                 <p class="normal">さぁ、君はどんな思い出をカクテルにする？</p>
+                <p class="note">※アップロード頂いた画像は保存されませんので<br>ご安心ください。</p>
                 <div class="link-area">
                     <a class="hover-op" href="https://barmoonwalk.jp/">Cocktail images via "bar moon walk"</a>
                     <a class="hover-op" href="https://giphy.com/gifs/cinemagraph-bartender-takumi-tdHfgqwkxeDy8">Background image via "GIPHY"</a>

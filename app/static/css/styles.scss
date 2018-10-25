@@ -462,7 +462,7 @@ select {
         top: 34.5%;
         left: 47%;
         width: 35%;
-        padding: 47px 1%;
+        padding: 50px 1%;
         margin-bottom: 0;
     }
 }
@@ -505,9 +505,6 @@ select {
             font-style: italic;
             font-size: 1.8rem;
             margin: 0;
-            @include media-queries-pc {
-                font-size: 2rem;
-            }
         }
     }
 }

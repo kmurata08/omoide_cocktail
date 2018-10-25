@@ -421,7 +421,7 @@ var app = new Vue({
                 return '';
             }
             var rgb = this.result.rgb;
-            var rgba = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',0.5)';
+            var rgba = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',0.3)';
             return rgba;
         },
         resultColorCode: function() {

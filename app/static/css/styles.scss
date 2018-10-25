@@ -528,11 +528,20 @@ select {
     }
     & .link-area{
         text-align: left;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        padding-top: 5%;
+        padding-top: 10%;
+        @include media-queries-pc {
+            padding-top: 4%;
+        }
+        & div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding-top: 5%;
+            @include media-queries-pc {
+                padding-top: 2%;
+            }
+        }
     }
     & a{
         padding: 0;

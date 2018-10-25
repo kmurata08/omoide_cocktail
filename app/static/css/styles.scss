@@ -434,6 +434,7 @@ select {
         object-fit: contain;
         background: rgba(255,255,255,0.5);
         @include media-queries-pc {
+            margin-top: 3.25%;
             position: absolute;
             width: 300px;
             height: 300px;
@@ -458,10 +459,10 @@ select {
     align-items: center;
     flex-direction: column;
     @include media-queries-pc {
-        top: 37.5%;
+        top: 34.5%;
         left: 47%;
         width: 35%;
-        padding: 41px 1%;
+        padding: 47px 1%;
         margin-bottom: 0;
     }
 }
@@ -488,7 +489,7 @@ select {
             width: 60%;
         }
         label{
-            color: $gray-b;
+            color: white;
             @include media-queries-pc {
                 font-size: 1.2rem;
             }
@@ -499,8 +500,9 @@ select {
         }
         p{
             text-align: center;
-            color: $gray-b;
+            color: white;
             font-weight: bold;
+            font-style: italic;
             font-size: 1.8rem;
             margin: 0;
             @include media-queries-pc {
@@ -526,6 +528,7 @@ select {
         padding: 5% 15%;
     }
     & p {
+        font-style: italic;
         padding: 3% 0;
         margin: 0;
         text-align: center;
@@ -538,6 +541,9 @@ select {
             width: 56%;
             font-size: 1.8rem;
         }
+    }
+    & p.normal{
+        font-style: normal;
     }
     & span{
         color: $brand-c;

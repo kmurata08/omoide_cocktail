@@ -23,7 +23,11 @@ gulp.task('minify-css', function() {
  */
 gulp.task('minify-js', function() {
     return gulp.src("./app/static/js/script.js")
-        .pipe($.uglify())
+        .pipe($.uglify()
+            .on('error', function(e) {
+                console.log(e);
+            })
+        )
         .pipe($.rename({
             extname: '.min.js'
         }))

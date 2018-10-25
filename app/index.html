@@ -36,7 +36,7 @@
             </a>
         </div>
     </header>
-    <main id="app">
+    <main id="app" v-cloak>
         <div class="bg" v-bind:class="{ 'bg-calculate': isCalculating }">
             <div class="input_file" v-if="!imgLoaded">
                 <label class="input_btn" for="image_form">

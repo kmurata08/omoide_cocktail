@@ -72,7 +72,7 @@
                             </div>
                             <div v-if="result">
                                 <label>あなたにオススメのカクテルは、</label>
-                                <p v-bind:style="{color: resultColorCode}">{{ result.name }}</p>
+                                <p v-bind:style="{'background-color': resultColorCode}">{{ result.name }}</p>
                                 <label class="mt-5">カクテル言葉</label>
                                 <p>{{ result.word }}あなたへ</p>
                             </div>

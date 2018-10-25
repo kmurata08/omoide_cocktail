@@ -517,21 +517,22 @@ select {
         font-style: normal;
     }
     & p.note{
+        text-align: left;
+        padding: 0;
         color: $gray-l;
         font-style: normal;
         font-size: 1.2rem;
-        @include media-queries-pc {
-            font-size: 1.4rem;
-        }
     }
     & span{
         color: $brand-c;
     }
     & .link-area{
+        text-align: left;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        padding-top: 5%;
     }
     & a{
         padding: 0;

@@ -421,10 +421,7 @@ var app = new Vue({
                 return '';
             }
             var rgb = this.result.rgb;
-            var rhex = rgb[0].toString(16);
-            var ghex = rgb[1].toString(16);
-            var bhex = rgb[2].toString(16);
-            var colorCode = '#' + rhex + ghex + bhex;
+            var colorCode = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',0.5)';
             return colorCode;
         },
         resultImgUri: function() {

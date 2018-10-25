@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <title>おもいでカクテル | あの日の思い出をカクテルに</title>
@@ -36,51 +37,50 @@
                 </a>
             </div>
         </header>
-        <main>
-            <div class="bg" v-bind:class="{ 'bg-calculate': isCalculating }">
-                <div class="input_file" v-show="!imgLoaded">
-                    <label class="input_btn" for="image_form">
+        <main class="bg" v-bind:class="{ 'bg-calculate': isCalculating }">
+
+            <div class="input_file" v-show="!imgLoaded">
+                <label class="input_btn" for="image_form">
                         <img id="upload-img" src="static/img/ck-upload.png"/>
                     </label>
-                    <input accept="image/*" id="image_form" type="file" v-on:change="setImg">
+                <input accept="image/*" id="image_form" type="file" v-on:change="setImg">
+            </div>
+            <div class="upload_file" v-show="(imgSetted && !result) || isCalculating">
+                <div class="preview" v-show="imgLoaded">
+                    <div>
+                        <img v-bind:src="blobUrl" v-on:load="onLoadImg">
+                    </div>
+                    <div class="wrapper">
+                        <button class="btn" v-if="imgLoaded" v-on:click="convert">画像を解析する</button>
+                    </div>
+                    <div class="wrapper" v-show="isCalculating">
+                        <button class="btn-load">マスター解析中...</button>
+                        <!--<div id="bar"></div>-->
+                    </div>
+                    <div v-show="!imgLoaded">
+                        <p>Loading...</p>
+                    </div>
                 </div>
-                <div class="upload_file" v-show="(imgSetted && !result) || isCalculating">
-                    <div class="preview" v-show="imgLoaded">
+            </div>
+            <div v-show="!isCalculating && result">
+                <div class="result-img">
+                    <img id="result-img" v-bind:src="blobUrl">
+                </div>
+                <div id="result-area" class="result-area" v-bind:style="{'background-color': resultColorRgba}">
+                    <div class="info-result">
                         <div>
-                            <img v-bind:src="blobUrl" v-on:load="onLoadImg">
+                            <img v-bind:src="resultImgUri">
                         </div>
-                        <div class="wrapper">
-                            <button class="btn" v-if="imgLoaded" v-on:click="convert">画像を解析する</button>
-                        </div>
-                        <div class="wrapper" v-show="isCalculating">
-                            <button class="btn-load">マスター解析中...</button>
-                            <!--<div id="bar"></div>-->
-                        </div>
-                        <div v-show="!imgLoaded">
-                            <p>Loading...</p>
+                        <div v-if="result">
+                            <label>あなたにオススメのカクテルは、</label>
+                            <p v-bind:style="{'background-color': resultColorRgba}">{{ result.name }}</p>
+                            <label class="mt-5">カクテル言葉</label>
+                            <p v-bind:style="{'background-color': resultColorRgba}">{{ result.word }}あなたへ</p>
                         </div>
                     </div>
-                </div>
-                <div v-show="!isCalculating && result">
-                    <div class="result-img">
-                        <img id="result-img" v-bind:src="blobUrl">
-                    </div>
-                    <div id="result-area" class="result-area" v-bind:style="{'background-color': resultColorRgba}">
-                        <div class="info-result" >
-                            <div>
-                                <img v-bind:src="resultImgUri">
-                            </div>
-                            <div v-if="result">
-                                <label>あなたにオススメのカクテルは、</label>
-                                <p v-bind:style="{'background-color': resultColorRgba}">{{ result.name }}</p>
-                                <label class="mt-5">カクテル言葉</label>
-                                <p v-bind:style="{'background-color': resultColorRgba}">{{ result.word }}あなたへ</p>
-                            </div>
-                        </div>
-                        <div class="btn-result">
-                            <a class="hover-buru" v-bind:href="resultShareUri" target="blank_">Twiiterでシェアする</a>
-                            <button class="hover-buru" v-on:click="reset">もう一度やる</button>
-                        </div>
+                    <div class="btn-result">
+                        <a class="hover-buru" v-bind:href="resultShareUri" target="blank_">Twiiterでシェアする</a>
+                        <button class="hover-buru" v-on:click="reset">もう一度やる</button>
                     </div>
                 </div>
             </div>

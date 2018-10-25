@@ -244,7 +244,7 @@ select {
     color: $gray-b;
     background: rgba(188, 188, 188,0.5);
     &:before{
-        top: 15px;
+        top: 13px;
         background: $brand-c;
     }
     &:hover{
@@ -267,7 +267,7 @@ select {
         width: 46%;
         margin: 4% 2% 0;
         font-size: 1.4rem;
-        padding: 20px;
+        padding: 20px 15px;
         overflow: hidden;
         transition: all 1s;
         z-index: 1;
@@ -307,7 +307,7 @@ select {
 	background: inherit;
 	filter: blur(3px) grayscale(90%);
 	position: fixed;
-	top: -30px;
+	top: -20px;
 	bottom: -30px;
 	left: -30px;
 	right: -30px;
@@ -425,7 +425,8 @@ select {
 .result-area{
     position: absolute;
     top: 60%;
-    width: 100%;
+    width: 95%;
+    margin: 2%;
     padding: 5% 1%;
     margin-bottom: 20%;
     border-radius: 5px;
@@ -436,6 +437,7 @@ select {
         top: 34.5%;
         left: 47%;
         width: 35%;
+        height: 300px;
         padding: 50px 1%;
         margin-bottom: 0;
     }
@@ -449,19 +451,13 @@ select {
     }
     div:nth-child(1){
         text-align: center;
-        width: 35%;
-        @include media-queries-pc {
-            width: 40%;
-        }
+        width: 30%;
         img{
             width: 60px;
         }
     }
     div:nth-child(2){
-        width: 65%;
-        @include media-queries-pc {
-            width: 60%;
-        }
+        width: 70%;
         label{
             color: white;
             @include media-queries-pc {

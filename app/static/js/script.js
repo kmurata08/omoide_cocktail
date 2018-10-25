@@ -1,5 +1,3 @@
-var isSmartPhone = isMobile.phone;
-var isTablet = isMobile.tablet;
 var app = new Vue({
     el: '#app',
     data: {
@@ -269,23 +267,10 @@ var app = new Vue({
             var self = this;
             setTimeout(function() {
                 self.isCalculating = false;
+                self.resultAnimation()
             }, 8000);
 
-            // animation
-            if (isSmartPhone || isTablet) {
-                TweenMax.from("#bar", 1.75, {
-                    x: 240,
-                    repeat: -1,
-                    yoyo: true
-                });
-            } else {
-                TweenMax.from("#bar", 1.75, {
-                    x: 290,
-                    repeat: -1,
-                    yoyo: true
-                });
-            }
-
+            this.calcBarAnimation();
         },
         /**
          * 入力されたRGBとカクテルのリストから、最も近いカクテルを選ぶ
@@ -341,6 +326,56 @@ var app = new Vue({
             var colorCode = '#' + rhex + ghex + bhex;
             return colorCode;
         },
+        pageMountedAnimation: function() {
+            var isSp = isMobile.phone || isMobile.tablet;
+            TweenMax.from(".logo", 0.75, {
+                ease: Power2.easeOut,
+                x: isSp ? -50 : -25,
+                opacity: 0
+            });
+            TweenMax.from("#logo", 0.75, {
+                delay: isSp ? 0.8 : null,
+                ease: Power2.easeOut,
+                y: 25,
+                opacity: 0
+            });
+            TweenMax.from(".modal-open", 0.75, {
+                delay: isSp ? 0.8 : null,
+                ease: Power2.easeOut,
+                y: 25,
+                opacity: 0
+            });
+            TweenMax.from("#upload-img", 0.75, {
+                delay: 1,
+                ease: Power2.easeOut,
+                y: 25,
+                opacity: 0
+            });
+
+        },
+        calcBarAnimation: function() {
+            var isSp = isMobile.phone || isMobile.tablet;
+            TweenMax.from("#bar", 1.75, {
+                repeat: -1,
+                x: isSp ? 240 : 290,
+                yoyo: true
+            });
+        },
+        resultAnimation: function() {
+            var isSp = isMobile.phone || isMobile.tablet;
+            TweenMax.to("#result-img", 0.75, {
+                delay: 0.8,
+                ease: Power3.easeOutIn,
+                y: isSp ? -25 : -225
+            });
+            TweenMax.from("#result-area", 0.75, {
+                delay: 1,
+                ease: Power3.easeOutIn,
+                opacity: 0,
+                x: isSp ? null : 190,
+                y: 25
+            });
+        }
     },
     computed: {
         resultColorCode: function() {
@@ -368,89 +403,12 @@ var app = new Vue({
         }
     },
     mounted: function() {
+        this.pageMountedAnimation();
         // 画像の先読み
         var bgGif = new Image();
         bgGif.src = "./static/img/bartender.gif";
     }
 });
-/**
- * アニメーション
- */
-if (isSmartPhone || isTablet) {
-TweenMax.from(".logo", 0.75, {
-    ease: Power2.easeOut,
-    x: -50,
-    opacity: 0
-});
-TweenMax.from("#logo", 0.75, {
-    delay: 0.8,
-    ease: Power2.easeOut,
-    y: 25,
-    opacity: 0
-});
-TweenMax.from(".modal-open", 0.75, {
-    delay: 0.8,
-    ease: Power2.easeOut,
-    y: 25,
-    opacity: 0
-});
-TweenMax.from("#upload-img", 0.75, {
-    delay: 1,
-    ease: Power2.easeOut,
-    y: 25,
-    opacity: 0
-});
-} else {
-    TweenMax.from(".logo", 0.75, {
-        ease: Power2.easeOut,
-        y:- 25,
-        opacity: 0
-    });
-    TweenMax.from("#logo", 0.75, {
-        delay: 0.8,
-        ease: Power2.easeOut,
-        y: 25,
-        opacity: 0
-    });
-    TweenMax.from(".modal-open", 0.75, {
-        ease: Power2.easeOut,
-        y: -25,
-        opacity: 0
-    });
-    TweenMax.from("#upload-img", 0.75, {
-        delay: 1,
-        ease: Power2.easeOut,
-        y: 25,
-        opacity: 0
-    });
-}
-
-if (isSmartPhone || isTablet) {
-    TweenMax.to("#result-img", 0.75, {
-        delay: 0.8,
-        ease: Power3.easeOutIn,
-        y: -25
-    });
-    TweenMax.from("#result-area", 0.75, {
-        delay: 1,
-        ease: Power3.easeOutIn,
-        y: 25,
-        opacity: 0
-    });
-} else {
-    TweenMax.to("#result-img", 0.75, {
-        delay: 0.8,
-        ease: Power3.easeOutIn,
-        x: -225
-    });
-    TweenMax.from("#result-area", 0.75, {
-        delay: 1,
-        ease: Power3.easeOutIn,
-        opacity: 0,
-        x: 190,
-        y: 25
-    });
-}
 
 /**
  * モーダル

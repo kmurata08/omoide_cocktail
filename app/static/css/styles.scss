@@ -131,16 +131,10 @@ header{
         z-index: 1;
         position: fixed;
         margin: 1% 4%;
-        @include media-queries-tab {
-            margin: 15px 0 0 15px;
-        }
         & svg{
             fill: #808080;
             width: 46px;
             height: auto;
-            @include media-queries-tab {
-                width: 60px;
-            }
             @include media-queries-pc {
                 width: 84px;
             }
@@ -152,38 +146,19 @@ header{
         margin-top: 10%;
         width: 100%;
         text-align: center;
-        @include media-queries-tab {
-            margin-top: 0;
-        }
         @include media-queries-pc {
             margin-top: 46px;
-        }
-        & img{
-            max-width: 170px;
-            @include media-queries-tab {
-                display: none;
-            }
-            @include media-queries-pc {
-                display: none;
-            }
         }
         & a{
             position: fixed;
             right: 16%;
             margin-top: -14%;
             width: 22px;
-            @include media-queries-tab {
-                right: 0;
-                margin: 15px 15px 0 0;
-            }
             @include media-queries-pc {
                 right: 3%;
                 margin-top: -10%;
             }
             & svg{
-                @include media-queries-tab {
-                    width: 18px;
-                }
                 @include media-queries-pc {
                     width: 25px;
                 }

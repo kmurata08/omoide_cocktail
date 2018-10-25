@@ -367,7 +367,8 @@ var app = new Vue({
             TweenMax.to("#result-img", 0.75, {
                 delay: 0.8,
                 ease: Power3.easeOutIn,
-                y: isSp ? -25 : -225
+                y: isSp ? -25 : null,
+                x: isSp ? null : -225
             });
             TweenMax.from("#result-area", 0.75, {
                 delay: 1,

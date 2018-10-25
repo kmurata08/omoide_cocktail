@@ -552,6 +552,11 @@ select {
         @include media-queries-pc {
             padding-top: 4%;
         }
+        & p{
+            @include media-queries-pc {
+                width: 83%;
+            }
+        }
         & div{
             display: flex;
             justify-content: center;

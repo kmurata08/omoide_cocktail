@@ -210,7 +210,7 @@ select {
     font-size: 18px;
     padding: 20px 40px;
     position: absolute;
-    top: 90%;
+    top: 95%;
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: hidden;
@@ -521,7 +521,7 @@ select {
     }
     & p {
         font-style: italic;
-        padding: 2%;
+        padding: 2% 1%;
         margin: 0;
         text-align: center;
         font-weight: bold;

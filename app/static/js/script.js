@@ -366,6 +366,11 @@ var app = new Vue({
             }
             return "https://twitter.com/intent/tweet?url=http://cooktail.edgenium.com&text=わたしの思い出が「" + this.result.name + "」に変換されました！%0A&hashtags=おもいでカクテル";
         }
+    },
+    mounted: function() {
+        // 画像の先読み
+        var bgGif = new Image();
+        bgGif.src = "./static/img/bartender.gif";
     }
 });
 /**

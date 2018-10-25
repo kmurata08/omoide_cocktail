@@ -7,6 +7,7 @@ var app = new Vue({
         imgElement: null,
         isCalculating: false,
         result: null,
+        currentScrollY: 0,
         cocktails: [{
                 name: "ジントニック",
                 rgb: [193, 199, 214],
@@ -375,6 +376,42 @@ var app = new Vue({
                 x: isSp ? null : 190,
                 y: 25
             });
+        },
+        infoModalOpen: function() {
+            var scrollY = $(window).scrollTop();
+            this.currentScrollY = scrollY;
+            $('body').css({
+                position: 'fixed',
+                width: '100%',
+                top: -1 * scrollY
+            });
+            $('body').append('<div class="modal-overlay"></div>');
+            $('.modal-overlay').fadeIn('fast');
+            var modal = '#info-modal';
+            modalResize();
+            $(modal).fadeIn('fast');
+            // リサイズしたら表示位置を再取得
+            $(window).on('resize', function() {
+                modalResize();
+            });
+            // モーダルコンテンツの表示位置を設定する関数
+            function modalResize() {
+                var w = $(window).width();
+                var x = (w - $(modal).outerWidth(true)) / 2;
+                $(modal).css({
+                    'left': x + 'px'
+                });
+            }
+        },
+        modalClose: function() {
+            $('.modal-content,.modal-overlay').fadeOut(300);
+            $('body').attr({
+                style: ''
+            });
+            $('html, body').prop({
+                scrollTop: this.currentScrollY
+            });
+            $('.modal-overlay').remove();
         }
     },
     computed: {
@@ -400,7 +437,7 @@ var app = new Vue({
                 return '';
             }
             return "https://twitter.com/intent/tweet?url=http://cooktail.edgenium.com&text=わたしの思い出が「" + this.result.name + "」に変換されました！%0A&hashtags=おもいでカクテル";
-        }
+        },
     },
     mounted: function() {
         this.pageMountedAnimation();
@@ -408,49 +445,4 @@ var app = new Vue({
         var bgGif = new Image();
         bgGif.src = "./static/img/bartender.gif";
     }
-});
-
-/**
- * モーダル
- */
-var current_scrollY;
-$('.modal-open').click(function() {
-    current_scrollY = $(window).scrollTop();
-    $('body').css({
-        position: 'fixed',
-        width: '100%',
-        top: -1 * current_scrollY
-    });
-    $('body').append('<div class="modal-overlay"></div>');
-    $('.modal-overlay').fadeIn('fast');
-    var modal = '#' + $(this).attr('data-target');
-    modalResize();
-    $(modal).fadeIn('fast');
-    // リサイズしたら表示位置を再取得
-    $(window).on('resize', function() {
-        modalResize();
-    });
-    // モーダルコンテンツの表示位置を設定する関数
-    function modalResize() {
-        // ウィンドウの横幅、高さを取得
-        var w = $(window).width();
-        //var h = $(window).height();
-        // モーダルコンテンツの表示位置を取得
-        var x = (w - $(modal).outerWidth(true)) / 2;
-        //var y = (w - $(modal).outerHeight(true)) / 2;
-        // モーダルコンテンツの表示位置を設定
-        $(modal).css({
-            'left': x + 'px'
-        });
-    }
-});
-$('.modal-overlay, .modal-close').off().click(function() {
-    $('.modal-content,.modal-overlay').fadeOut(300);
-    $('body').attr({
-        style: ''
-    });
-    $('html, body').prop({
-        scrollTop: current_scrollY
-    });
-    $('.modal-overlay').remove();
 });

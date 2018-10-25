@@ -72,9 +72,9 @@
                             </div>
                             <div v-if="result">
                                 <label>あなたにオススメのカクテルは、</label>
-                                <p v-bind:style="{'background-color': resultColorCode}">{{ result.name }}</p>
+                                <p v-bind:style="{'background-color': resultColorRgba}">{{ result.name }}</p>
                                 <label class="mt-5">カクテル言葉</label>
-                                <p v-bind:style="{'background-color': resultColorCode}">{{ result.word }}あなたへ</p>
+                                <p v-bind:style="{'background-color': resultColorRgba}">{{ result.word }}あなたへ</p>
                             </div>
                         </div>
                         <div class="btn-result">
@@ -94,7 +94,7 @@
                 <p>「はい、いかがいたしましたか？」</p>
                 <p>「実は今日、すごく嬉しいことがあってさ。この思い出、濃いめでもらえない？」</p>
                 <p>「かしこまりました。それでは、そちらのお写真のアップロードをお願いいたします..」</p>
-                <p class="normal">ちょっと先の未来は、こんなふうに日々の<br><span>思い出を消費</span><br>してるかもしれません。</p>
+                <p class="normal">ちょっと先の未来は、<br>こんなふうに日々の<span>思い出を消費</span>してるかもしれません。</p>
                 <p class="normal">さぁ、君はどんな思い出をカクテルにする？</p>
                 <p class="note">※アップロード頂いた画像は<br>本システムに保存されませんのでご安心ください。</p>
                 <div class="link-area">

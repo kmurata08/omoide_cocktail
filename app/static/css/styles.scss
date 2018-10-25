@@ -524,14 +524,14 @@ select {
         padding: 5% 15%;
     }
     & p {
+        border-radius: 5px;
         font-style: italic;
-        padding: 3% 0;
+        padding: 2% 0;
         margin: 0;
         text-align: center;
         font-weight: bold;
         font-size: 1.6rem;
         @include media-queries-pc {
-            padding: 2% 13% 0;
             padding: 1% 0;
             margin: 0 auto;
             width: 56%;
@@ -557,10 +557,6 @@ select {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        margin-top: 10%;
-        @include media-queries-pc {
-            margin-top: 5%;
-        }
     }
     & a{
         padding: 0;

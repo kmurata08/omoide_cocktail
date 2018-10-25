@@ -90,7 +90,18 @@ $gray-b: #4d4d4d;
     box-shadow: 0 0 1px transparent;
     &:hover {
         cursor: pointer;
-        animation: skew 2.3s linear;
+        animation: skew 2s linear;
+    }
+}
+.buru {
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    animation: skew 3s linear infinite;
+    &:hover {
+        cursor: pointer;
     }
 }
 /**
@@ -105,6 +116,9 @@ html,body {
 html {
     font-size: 62.5%;
     overflow-y: scroll;
+}
+body{
+    background: black;
 }
 
 body,button,p {
@@ -124,39 +138,46 @@ main {
  Header
  */
 header{
-    position: fixed;
-    top: 0;
     z-index:2;
     & a.logo{
+        position: relative;
         z-index: 1;
-        position: fixed;
-        margin: 1% 4%;
+        margin: 5px 10px;
         & svg{
             fill: #808080;
             width: 46px;
             height: auto;
             @include media-queries-pc {
                 width: 84px;
+                margin-top: 15px;
+                margin-left: 20px;
             }
         }
     }
     & .title{
-        position: fixed;
+        position: relative;
+        display: flex;
+        justify-content: center;
         z-index: 1;
         margin-top: 10%;
         width: 100%;
-        text-align: center;
         @include media-queries-pc {
             margin-top: 46px;
         }
+        & #logo{
+            height: 90px;
+            @include media-queries-pc {
+                height: 100px;
+            }
+        }
         & a{
-            position: fixed;
-            right: 16%;
-            margin-top: -14%;
-            width: 22px;
+            position: absolute;
+            right: 14%;
+            margin-top: 8%;
+            width: 25px;
             @include media-queries-pc {
                 right: 3%;
-                margin-top: -10%;
+                margin-top: -5%;
             }
             & svg{
                 @include media-queries-pc {
@@ -164,21 +185,10 @@ header{
                 }
             }
         }
+        & .info-icon {
+            fill: #808080;
+        }
     }
-}
-
-#logo{
-    background: url(../img/ck-logo.png) no-repeat center;
-	background-size: contain;
-    width: auto;
-    height: 80px;
-    margin: 0 auto;
-    @include media-queries-pc {
-        height: 100px;
-    }
-}
-.info-icon {
-    fill: #808080;
 }
 
 /**
@@ -200,7 +210,7 @@ select {
     font-size: 18px;
     padding: 20px 40px;
     position: absolute;
-    top: 75%;
+    top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: hidden;
@@ -210,7 +220,7 @@ select {
     box-shadow: 0 6px 20px rgba(0,0,0,.16);
     @include media-queries-pc {
         width: 19.5%;
-        top: 77%;
+        top: 95%;
     }
 }
 
@@ -281,11 +291,9 @@ select {
     }
     a{
         text-decoration: none;
-    }
-    a:hover{
         background: #08a0e9;
     }
-    button:hover{
+    button{
         background: $brand-c;
         color: $gray-b;
     }
@@ -301,6 +309,7 @@ select {
 	background-size: cover;
 	z-index: 0;
 	position: relative;
+    overflow: inherit;
 }
 .bg:before{
 	content: '';
@@ -336,7 +345,7 @@ select {
     display: none;
 }
 .input_file {
-    height: 100vh;
+    height: 60vh;
     align-items: center;
     display: flex;
     justify-content: center;
@@ -357,9 +366,13 @@ select {
     animation: skew 2.3s linear;
     opacity: 0.8;
 }
+.input_btn img{
+    -webkit-box-shadow: 0 6px 20px rgba(0,0,0,.16);
+    box-shadow: 0 6px 20px rgba(0,0,0,.16);
+}
 
 .upload_file{
-    height: 100vh;
+    height: 60vh;
     align-items: center;
     display: flex;
     justify-content: center;
@@ -396,20 +409,20 @@ select {
 }
 
 .result-img{
-    height: 100vh;
+    height: 60vh;
     align-items: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
     img:nth-child(1) {
-        margin-top: -20%;
+        margin-top: -10%;
         border-radius: 5px;
         width: 250px;
         height: 250px;
         object-fit: contain;
         background: rgba(255,255,255,0.5);
         @include media-queries-pc {
-            margin-top: 3.25%;
+            margin-top: 1.25%;
             position: absolute;
             width: 300px;
             height: 300px;
@@ -424,7 +437,7 @@ select {
 }
 .result-area{
     position: absolute;
-    top: 60%;
+    top: 71%;
     width: 95%;
     margin: 2%;
     padding: 5% 1%;
@@ -434,7 +447,7 @@ select {
     align-items: center;
     flex-direction: column;
     @include media-queries-pc {
-        top: 34.5%;
+        top: 12%;
         left: 47%;
         width: 35%;
         height: 300px;
@@ -469,6 +482,10 @@ select {
             margin-top: 5%;
         }
         p{
+            border-radius: 5px;
+            padding: 4px 2px;
+            line-height: 1.2;
+            letter-spacing: .1em;
             text-align: center;
             color: white;
             font-weight: bold;
@@ -492,20 +509,24 @@ select {
     @include media-queries-pc{
         width: auto;
         height: auto;
-        padding: 5% 15%;
+        padding: 5% 25%;
+    }
+    & .comment{
+        border: 1px solid white;
+        border-radius: 5px;
+        margin-bottom: 10%;
     }
     & p {
-        border-radius: 5px;
         font-style: italic;
-        padding: 2% 0;
+        padding: 2%;
         margin: 0;
         text-align: center;
         font-weight: bold;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         @include media-queries-pc {
-            padding: 1% 0;
+            padding: 1%;
             margin: 0 auto;
-            width: 56%;
+            width: 80%;
             font-size: 1.8rem;
         }
     }
@@ -582,6 +603,6 @@ select {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.9);
     opacity: 0.8;
 }

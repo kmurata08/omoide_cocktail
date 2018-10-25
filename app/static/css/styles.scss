@@ -454,7 +454,6 @@ select {
     padding: 5% 1%;
     margin-bottom: 20%;
     border-radius: 5px;
-    opacity: .8;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -543,6 +542,7 @@ select {
         font-style: normal;
     }
     & p.note{
+        color: $gray-l;
         font-style: normal;
         font-size: 1.2rem;
         @include media-queries-pc {

@@ -259,18 +259,16 @@ var app = new Vue({
             this.imgElement = e.target;
         },
         convert: function() {
-            this.isCalculating = true;
-            var vibrantRGB = this.getVibrantRGB(this.imgElement);
-            var cocktail = this.calcMostNearestCocktail(vibrantRGB, this.cocktails);
-            this.result = cocktail;
-            this.resultColor = this.getColorCodeFromRGB(cocktail.rgb);
-
             var self = this;
             setTimeout(function() {
+                var vibrantRGB = self.getVibrantRGB(self.imgElement);
+                var cocktail = self.calcMostNearestCocktail(vibrantRGB, self.cocktails);
+                self.result = cocktail;
+                self.resultColor = self.getColorCodeFromRGB(cocktail.rgb);
                 self.isCalculating = false;
                 self.resultAnimation()
             }, 8000);
-
+            this.isCalculating = true;
             this.calcBarAnimation();
         },
         /**

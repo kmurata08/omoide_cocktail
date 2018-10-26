@@ -584,9 +584,9 @@ select {
 
 .modal-body{
     color: white;
-    margin-top: 15%;
+    margin-top: 5%;
     @include media-queries-pc {
-        margin-top: 10%;
+        margin-top: 3%;
     }
 }
 .modal-close{

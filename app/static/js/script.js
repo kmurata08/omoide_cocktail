@@ -480,6 +480,6 @@ var app = new Vue({
         this.pageMountedAnimation();
         // 画像の先読み
         var bgGif = new Image();
-        bgGif.src = "./static/img/bartender.gif";
+        bgGif.src = "./static/img/oc-bartender.gif";
     }
 });

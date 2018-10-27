@@ -11,13 +11,13 @@ var app = new Vue({
         cocktails: [{
                 name: "ジントニック",
                 rgb: [193, 199, 214],
-                word: "いつも希望を捨てないあなたへ",
+                word: "いつも希望を捨てない\nあなたへ",
                 img: "oc-jinTonic.png"
             },
             {
                 name: "マティーニ",
                 rgb: [215, 219, 228],
-                word: "知的で堅実なあなたへ",
+                word: "知的でちょっと\n硬めなあなたへ",
                 img: "oc-martini.png"
             },
             {
@@ -29,25 +29,25 @@ var app = new Vue({
             {
                 name: "ジンライム",
                 rgb: [187, 194, 198],
-                word: "いつまでもロマンチックなあなたへ",
+                word: "ロマンチックが\n止まらないあなたへ",
                 img: "oc-jinLime.png"
             },
             {
                 name: "カンパリオレンジ",
                 rgb: [245, 48, 44],
-                word: "どこまでも自由を\n求めるあなたへ",
+                word: "どこまでも\n自由なあなたへ",
                 img: "oc-campariOrange.png"
             },
             {
                 name: "カシスソーダ",
                 rgb: [172, 14, 9],
-                word: "誰をも魅了する\nあなたへ",
+                word: "生きとし生けるもの\nを魅了するあなたへ",
                 img: "oc-cassisSoda.png"
             },
             {
                 name: "ブラッディ・メアリー",
                 rgb: [125, 37, 35],
-                word: "勝利への強い意思を\n持つあなたへ",
+                word: "何事にも勝利したい\nあなたへ",
                 img: "oc-bloodyMary.png"
             },
             {
@@ -59,13 +59,13 @@ var app = new Vue({
             {
                 name: "レッドアイ",
                 rgb: [193, 38, 43],
-                word: "弱き者にも手を差し伸べられるあなたへ",
+                word: "いつでも献身的な\nあなたへ",
                 img: "oc-redEye.png"
             },
             {
                 name: "テキーラ・サンライズ",
                 rgb: [189, 117, 37],
-                word: "熱烈な恋をしている\nあなたへ",
+                word: "今熱烈な恋をしている\nあなたへ",
                 img: "oc-tequilaSunrise.png"
             },
             {
@@ -77,7 +77,7 @@ var app = new Vue({
             {
                 name: "オレンジ・ブロッサム",
                 rgb: [188, 156, 76],
-                word: "純潔なあなたへ",
+                word: "ピュアすぎるあなたへ",
                 img: "oc-orangeBlossom.png"
             },
             {
@@ -113,7 +113,7 @@ var app = new Vue({
             {
                 name: "カシスオレンジ",
                 rgb: [183, 90, 46],
-                word: "魅力的という言葉が\n似合うあなたへ",
+                word: "魅力という言葉が\n似合うあなたへ",
                 img: "oc-cassisOrange.png"
             },
             {
@@ -137,13 +137,13 @@ var app = new Vue({
             {
                 name: "ブルーハワイ",
                 rgb: [35, 173, 168],
-                word: "空想・連想が好きな\nあなたへ",
+                word: "空想や連想が好きな\nあなたへ",
                 img: "oc-blueHawaii.png"
             },
             {
                 name: "ガルフストリーム",
                 rgb: [17, 209, 208],
-                word: "クールに見えて\n本当は優しいあなたへ",
+                word: "クールに見えて\n実は優しいあなたへ",
                 img: "oc-gulfStream.png"
             },
             {
@@ -209,25 +209,25 @@ var app = new Vue({
             {
                 name: "スプリッツァー",
                 rgb: [177, 170, 141],
-                word: "真実を愛するあなたへ",
+                word: "嘘が大嫌いなあなたへ",
                 img: "oc-spritzer.png"
             },
             {
                 name: "XYZ",
                 rgb: [225, 225, 225],
-                word: "永遠に全てを\n捧げたいあなたへ",
+                word: "全てを捧げたい\nあなたへ",
                 img: "oc-xyz.png"
             },
             {
                 name: "ブラック・ベルベット",
                 rgb: [32, 4, 7],
-                word: "忘れないでいて欲しい\nあなたへ",
+                word: "常に話題にされたい\nあなたへ",
                 img: "oc-blackVelvet.png"
             },
             {
                 name: "ブラック・ルシアン",
                 rgb: [44, 38, 42],
-                word: "憎むほど\n愛しいあなたへ",
+                word: "愛と憎しみに\n翻弄されたいあなたへ",
                 img: "oc-blackRussian.png"
             },
         ]

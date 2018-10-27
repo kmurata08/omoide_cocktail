@@ -320,7 +320,7 @@ select {
 .bg:before{
 	content: '';
 	background: inherit;
-	filter: blur(3px) grayscale(90%);
+    filter: blur(3px) grayscale(90%);
 	position: fixed;
 	top: -20px;
 	bottom: -30px;

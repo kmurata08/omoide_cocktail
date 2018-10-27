@@ -327,25 +327,31 @@ var app = new Vue({
         },
         pageMountedAnimation: function() {
             var isSp = isMobile.phone || isMobile.tablet;
-            TweenMax.from(".logo", 0.75, {
+            TweenMax.from(".bg", 1.75, {
+                delay: 0.5,
                 ease: Power2.easeOut,
-                x: isSp ? -50 : -25,
                 opacity: 0
             });
-            TweenMax.from("#logo", 0.75, {
-                delay: isSp ? 0.8 : null,
-                ease: Power2.easeOut,
-                y: 25,
-                opacity: 0
-            });
-            TweenMax.from(".modal-open", 0.75, {
-                delay: isSp ? 0.8 : null,
+            TweenMax.from(".logo", 1, {
+                delay: 1.75,
                 ease: Power2.easeOut,
                 y: 25,
                 opacity: 0
             });
-            TweenMax.from("#upload-img", 0.75, {
-                delay: 1,
+            TweenMax.from("#logo", 1, {
+                delay: 1.75,
+                ease: Power2.easeOut,
+                y: 25,
+                opacity: 0
+            });
+            TweenMax.from(".modal-open", 1, {
+                delay: 1.75,
+                ease: Power2.easeOut,
+                y: 25,
+                opacity: 0
+            });
+            TweenMax.from("#upload-img", 1, {
+                delay: 2,
                 ease: Power2.easeOut,
                 y: 25,
                 opacity: 0

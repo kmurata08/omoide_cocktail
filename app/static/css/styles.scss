@@ -253,6 +253,10 @@ select {
     @extend .btn;
     width: 70%;
     left: 50%;
+    @include media-queries-pc {
+        width: 19.5%;
+        top: 95%;
+    }
     color: $gray-b;
     background: rgba(188, 188, 188,1);
     &:before{

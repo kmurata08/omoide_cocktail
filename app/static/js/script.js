@@ -11,223 +11,223 @@ var app = new Vue({
         cocktails: [{
                 name: "ジントニック",
                 rgb: [193, 199, 214],
-                word: "いつも希望を捨てない",
+                word: "いつも希望を捨てないあなたへ",
                 img: "oc-jinTonic.png"
             },
             {
                 name: "マティーニ",
                 rgb: [215, 219, 228],
-                word: "知的で堅実な",
+                word: "知的で堅実なあなたへ",
                 img: "oc-martini.png"
             },
             {
                 name: "モスコミュール",
                 rgb: [226, 167, 7],
-                word: "どんな人とも溶け合える",
+                word: "どんな人とも\n溶け合えるあなたへ",
                 img: "oc-moscowMule.png"
             },
             {
                 name: "ジンライム",
                 rgb: [187, 194, 198],
-                word: "いつまでもロマンチックな",
+                word: "いつまでもロマンチックなあなたへ",
                 img: "oc-jinLime.png"
             },
             {
                 name: "カンパリオレンジ",
                 rgb: [245, 48, 44],
-                word: "どこまでも自由を求める",
+                word: "どこまでも自由を\n求めるあなたへ",
                 img: "oc-campariOrange.png"
             },
             {
                 name: "カシスソーダ",
                 rgb: [172, 14, 9],
-                word: "誰をも魅了する",
+                word: "誰をも魅了する\nあなたへ",
                 img: "oc-cassisSoda.png"
             },
             {
                 name: "ブラッディ・メアリー",
                 rgb: [125, 37, 35],
-                word: "勝利への強い意思を持つ",
+                word: "勝利への強い意思を\n持つあなたへ",
                 img: "oc-bloodyMary.png"
             },
             {
                 name: "キール",
                 rgb: [174, 42, 1],
-                word: "小さな出会いをも大切にする",
+                word: "小さな出会いを\n大切にするあなたへ",
                 img: "oc-kir.png"
             },
             {
                 name: "レッドアイ",
                 rgb: [193, 38, 43],
-                word: "弱き者にも手を差し伸べられる",
+                word: "弱き者にも手を差し伸べられるあなたへ",
                 img: "oc-redEye.png"
             },
             {
                 name: "テキーラ・サンライズ",
                 rgb: [189, 117, 37],
-                word: "熱烈な恋をしている",
+                word: "熱烈な恋をしている\nあなたへ",
                 img: "oc-tequilaSunrise.png"
             },
             {
                 name: "アプリコットフィズ",
                 rgb: [245, 107, 18],
-                word: "自分の想いに気づいて欲しい",
+                word: "自分の想いに気づいて\n欲しいあなたへ",
                 img: "oc-aplicotFizz.png"
             },
             {
                 name: "オレンジ・ブロッサム",
                 rgb: [188, 156, 76],
-                word: "純潔な",
+                word: "純潔なあなたへ",
                 img: "oc-orangeBlossom.png"
             },
             {
                 name: "ファジーネーブル",
                 rgb: [241, 201, 4],
-                word: "感謝の気持ちを忘れない",
+                word: "感謝の気持ちを\n忘れないあなたへ",
                 img: "oc-fuzzyNavel.png"
             },
             {
                 name: "スクリュードライバー",
                 rgb: [240, 170, 36],
-                word: "多くの人の心を奪う",
+                word: "多くの人の\n心を奪うあなたへ",
                 img: "oc-screwDriver.png"
             },
             {
                 name: "ソルティドッグ",
                 rgb: [199, 149, 92],
-                word: "守りたいと感じさせる",
+                word: "守りたいと\n感じさせるあなたへ",
                 img: "oc-saltyDog.png"
             },
             {
                 name: "シャンディガフ",
                 rgb: [213, 187, 70],
-                word: "無駄なことも楽しめる",
+                word: "無駄なことも\n楽しめるあなたへ",
                 img: "oc-shandyGaff.png"
             },
             {
                 name: "ジンバック",
                 rgb: [186, 165, 146],
-                word: "誠実で正しい心を持つ",
+                word: "誠実で正しい心を持つ\nあなたへ",
                 img: "oc-jinBuck.png"
             },
             {
                 name: "カシスオレンジ",
                 rgb: [183, 90, 46],
-                word: "魅力的という言葉が似合う",
+                word: "魅力的という言葉が\n似合うあなたへ",
                 img: "oc-cassisOrange.png"
             },
             {
                 name: "アラウンド・ザ・ワールド",
                 rgb: [81, 184, 75],
-                word: "冒険心が旺盛な",
+                word: "冒険心が旺盛な\nあなたへ",
                 img: "oc-aroundTheWorld.png"
             },
             {
                 name: "デビル",
                 rgb: [78, 162, 113],
-                word: "危険な香りのする",
+                word: "危険な香りのする\nあなたへ",
                 img: "oc-devil.png"
             },
             {
                 name: "チャイナブルー",
                 rgb: [67, 175, 183],
-                word: "自分を大切にできる自信家な",
+                word: "自分を大切にできる\n自信家なあなたへ",
                 img: "oc-chinaBlue.png"
             },
             {
                 name: "ブルーハワイ",
                 rgb: [35, 173, 168],
-                word: "空想・連想が好きな",
+                word: "空想・連想が好きな\nあなたへ",
                 img: "oc-blueHawaii.png"
             },
             {
                 name: "ガルフストリーム",
                 rgb: [17, 209, 208],
-                word: "クールに見えて本当は優しい",
+                word: "クールに見えて\n本当は優しいあなたへ",
                 img: "oc-gulfStream.png"
             },
             {
                 name: "キスインザダーク",
                 rgb: [177, 38, 65],
-                word: "日常に刺激を求める",
+                word: "日常に刺激を\n求めるあなたへ",
                 img: "oc-kissInTheDark.png"
             },
             {
                 name: "コスモポリタン",
                 rgb: [211, 12, 23],
-                word: "大人っぽく華麗な",
+                word: "大人っぽく華麗な\nあなたへ",
                 img: "oc-cosmopolitan.png"
             },
             {
                 name: "シンガポール・スリング",
                 rgb: [212, 151, 169],
-                word: "一見読めない魔性な面を持つ",
+                word: "一見読めない魔性な\n一面を持つあなたへ",
                 img: "oc-singaporeSling.png"
             },
             {
                 name: "ブルー・ムーン",
                 rgb: [131, 98, 147],
-                word: "誘惑を断ち切りたい",
+                word: "誘惑を断ち切りたい\nあなたへ",
                 img: "oc-blueMoon.png"
             },
             {
                 name: "バイオレット・フィズ",
                 rgb: [121, 95, 204],
-                word: "いつまでも覚えていて欲しい",
+                word: "いつまでも覚えていて\n欲しいあなたへ",
                 img: "oc-violetFizz.png"
             },
             {
                 name: "カルーア・ミルク",
                 rgb: [151, 129, 143],
-                word: "無邪気でいたずら好きな",
+                word: "無邪気でいたずら\n好きなあなたへ",
                 img: "oc-kahluaMilk.png"
             },
             {
                 name: "アメリカーノ",
                 rgb: [162, 33, 37],
-                word: "届かぬ想いを抱く",
+                word: "届かぬ想いを抱く\nあなたへ",
                 img: "oc-americano.png"
             },
             {
                 name: "カミカゼ",
                 rgb: [209, 213, 178],
-                word: "大切な人を守りたいと想う",
+                word: "大切な人を守りたいと\n想うあなたへ",
                 img: "oc-kamikaze.png"
             },
             {
                 name: "ギムレット",
                 rgb: [162, 163, 165],
-                word: "遠い人を想う",
+                word: "遠い人を想うあなたへ",
                 img: "oc-gimlet.png"
             },
             {
                 name: "マルガリータ",
                 rgb: [234, 230, 223],
-                word: "無言の愛情を届けたい",
+                word: "無言の愛情を\n届けたいあなたへ",
                 img: "oc-margarita.png"
             },
             {
                 name: "スプリッツァー",
                 rgb: [177, 170, 141],
-                word: "真実を愛する",
+                word: "真実を愛するあなたへ",
                 img: "oc-spritzer.png"
             },
             {
                 name: "XYZ",
                 rgb: [225, 225, 225],
-                word: "永遠に全てを捧げたい",
+                word: "永遠に全てを\n捧げたいあなたへ",
                 img: "oc-xyz.png"
             },
             {
                 name: "ブラック・ベルベット",
                 rgb: [32, 4, 7],
-                word: "忘れないで欲しい",
+                word: "忘れないでいて欲しい\nあなたへ",
                 img: "oc-blackVelvet.png"
             },
             {
                 name: "ブラック・ルシアン",
                 rgb: [44, 38, 42],
-                word: "憎むほど愛しい",
+                word: "憎むほど\n愛しいあなたへ",
                 img: "oc-blackRussian.png"
             },
         ]

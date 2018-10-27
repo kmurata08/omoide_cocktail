@@ -251,6 +251,8 @@ select {
 
 .btn-load{
     @extend .btn;
+    width: 70%;
+    left: 50%;
     color: $gray-b;
     background: rgba(188, 188, 188,1);
     &:before{
@@ -473,18 +475,20 @@ select {
         }
     }
     div:nth-child(2){
-        width: 70%;
+        width: 87%;
         label{
             color: white;
+            display: block;
+            margin-bottom: 2%;
             @include media-queries-pc {
                 font-size: 1.2rem;
             }
         }
         label.mt-5{
-            display: block;
             margin-top: 5%;
         }
         p{
+            word-break: keep-all;
             border-radius: 5px;
             padding: 4px 2px;
             line-height: 1.2;

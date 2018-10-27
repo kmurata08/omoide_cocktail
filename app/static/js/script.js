@@ -376,31 +376,35 @@ var app = new Vue({
                 y: 25
             });
             TweenMax.from("#cocktail-1", 0.75, {
-                delay: 1.5,
+                delay: 2,
                 ease: Power3.easeOutIn,
                 opacity: 0,
-                y: 25
             });
             TweenMax.from("#cocktail-img", 0.75, {
-                delay: 1.75,
+                delay: 3.5,
                 ease: Power3.easeOutIn,
                 opacity: 0,
                 y: 25
             });
             TweenMax.from("#cocktail-2", 0.75, {
-                delay: 2,
+                delay: 3.5,
                 ease: Power3.easeOutIn,
                 opacity: 0,
                 y: 25
             });
             TweenMax.from("#words-1", 0.75, {
-                delay: 2.5,
+                delay: 5.5,
+                ease: Power3.easeOutIn,
+                opacity: 0,
+            });
+            TweenMax.from("#words-2", 0.75, {
+                delay: 7,
                 ease: Power3.easeOutIn,
                 opacity: 0,
                 y: 25
             });
-            TweenMax.from("#words-2", 0.75, {
-                delay: 2.75,
+            TweenMax.from("#btn-result", 0.75, {
+                delay: 8.5,
                 ease: Power3.easeOutIn,
                 opacity: 0,
                 y: 25

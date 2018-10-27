@@ -203,8 +203,8 @@ select {
     height: 100%;
 }
 .btn {
-    color: white;
-    background: $gray-l;
+    color: $gray-b;
+    background: $brand-c;
     border-radius: 5px;
     width: 67%;
     font-size: 18px;
@@ -252,7 +252,7 @@ select {
 .btn-load{
     @extend .btn;
     color: $gray-b;
-    background: rgba(188, 188, 188,0.5);
+    background: rgba(188, 188, 188,1);
     &:before{
         top: 13px;
         background: $brand-c;
@@ -277,7 +277,7 @@ select {
         width: 46%;
         margin: 4% 2% 0;
         font-size: 1.4rem;
-        padding: 20px 15px;
+        padding: 10px 15px;
         overflow: hidden;
         transition: all 1s;
         z-index: 1;
@@ -286,7 +286,7 @@ select {
         @include media-queries-pc {
             width: 50%;
             margin: 2% 2% 0;
-            padding: 16px;
+            padding: 10px 10px 15px;
         }
     }
     a{
@@ -340,6 +340,9 @@ select {
 	left: -30px;
 	right: -30px;
 	z-index: -2;
+}
+.bg-calculate .preview img{
+    opacity: 0.4;
 }
 .input_file > input{
     display: none;

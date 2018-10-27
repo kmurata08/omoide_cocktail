@@ -63,7 +63,6 @@
                     </div>
                     <div class="wrapper" v-show="isCalculating">
                         <button class="btn-load">マスター解析中...</button>
-                        <!--<div id="bar"></div>-->
                     </div>
                     <div v-show="!imgLoaded">
                         <p>Loading...</p>
@@ -82,13 +81,13 @@
                         <div>
                             <label id="cocktail-1">あなたにオススメのカクテルは、</label>
                             <p id="cocktail-2" v-bind:style="{'background-color': resultColorRgba}">{{ resultName }}</p>
-                            <label id="words-1" class="mt-5">カクテル言葉</label>
+                            <label id="words-1" class="mt-5">カクテル言葉は、</label>
                             <p id="words-2" v-bind:style="{'background-color': resultColorRgba}">{{ resultWord }}あなたへ</p>
                         </div>
                     </div>
-                    <div class="btn-result">
-                        <a class="hover-buru" v-bind:href="resultShareUri" target="blank_">Twitterでシェアする</a>
-                        <button class="hover-buru" v-on:click="reset">もう一度やる</button>
+                    <div id="btn-result" class="btn-result">
+                        <a class="hover-buru" v-bind:href="resultShareUri" target="blank_">Twitterで<br>シェアする</a>
+                        <button class="hover-buru" v-on:click="reset">他の画像で<br>トライする</button>
                     </div>
                 </div>
             </div>

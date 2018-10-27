@@ -79,11 +79,11 @@
                         <div>
                             <img id="cocktail-img" v-bind:src="resultImgUri">
                         </div>
-                        <div v-if="result">
+                        <div>
                             <label id="cocktail-1">あなたにオススメのカクテルは、</label>
-                            <p id="cocktail-2" v-bind:style="{'background-color': resultColorRgba}">{{ result.name }}</p>
+                            <p id="cocktail-2" v-bind:style="{'background-color': resultColorRgba}">{{ resultName }}</p>
                             <label id="words-1" class="mt-5">カクテル言葉</label>
-                            <p id="words-2" v-bind:style="{'background-color': resultColorRgba}">{{ result.word }}あなたへ</p>
+                            <p id="words-2" v-bind:style="{'background-color': resultColorRgba}">{{ resultWord }}あなたへ</p>
                         </div>
                     </div>
                     <div class="btn-result">

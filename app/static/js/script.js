@@ -475,6 +475,18 @@ var app = new Vue({
             }
             return "https://twitter.com/intent/tweet?url=http://cooktail.edgenium.com&text=わたしの思い出が「" + this.result.name + "」に変換されました！%0A&hashtags=おもいでカクテル";
         },
+        resultName: function() {
+            if (this.result === null) {
+                return '';
+            }
+            return this.result.name;
+        },
+        resultWord: function() {
+            if (this.result === null) {
+                return '';
+            }
+            return this.result.word;
+        }
     },
     mounted: function() {
         this.pageMountedAnimation();

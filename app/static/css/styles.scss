@@ -486,6 +486,9 @@ select {
     }
     div:nth-child(2){
         width: 87%;
+        @include media-queries-pc {
+            width: 68%;
+        }
         label{
             color: white;
             display: block;

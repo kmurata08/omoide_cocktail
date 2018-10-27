@@ -426,6 +426,9 @@ select {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    @include media-queries-pc {
+        margin-top: 15%;
+    }
     img:nth-child(1) {
         margin-top: -10%;
         border-radius: 5px;
@@ -458,8 +461,8 @@ select {
     flex-direction: column;
     @include media-queries-pc {
         position: absolute;
-        top: 12%;
         left: 47%;
+        margin-top: -10.5%;
         width: 35%;
         height: 300px;
         padding: 50px 1%;

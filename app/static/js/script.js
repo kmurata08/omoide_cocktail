@@ -260,16 +260,20 @@ var app = new Vue({
         },
         convert: function() {
             var self = this;
+            this.isCalculating = true;
+            this.calcBarAnimation();
+
+            // 擬似並列処理のためsetTimeoutを使用
             setTimeout(function() {
+                setTimeout(function() {
+                    self.isCalculating = false;
+                    self.resultAnimation()
+                }, 8000);
                 var vibrantRGB = self.getVibrantRGB(self.imgElement);
                 var cocktail = self.calcMostNearestCocktail(vibrantRGB, self.cocktails);
                 self.result = cocktail;
                 self.resultColor = self.getColorCodeFromRGB(cocktail.rgb);
-                self.isCalculating = false;
-                self.resultAnimation()
-            }, 8000);
-            this.isCalculating = true;
-            this.calcBarAnimation();
+            }, 0);
         },
         /**
          * 入力されたRGBとカクテルのリストから、最も近いカクテルを選ぶ
